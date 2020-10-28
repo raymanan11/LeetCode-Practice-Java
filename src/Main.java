@@ -6,8 +6,8 @@ public class Main {
 
         ArrayProblems arr = new ArrayProblems();
 
-        int[] nums = {3,0,-2,-1,1,2};
-        List<List<Integer>> result = arr.threeSum(nums);
+        int[] nums = {7,1,5,3,6,4};
+        int result = arr.maxProfit(nums);
 
         System.out.println(result);
     }

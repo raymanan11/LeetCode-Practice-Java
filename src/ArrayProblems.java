@@ -3,6 +3,33 @@ import java.util.*;
 
 public class ArrayProblems {
 
+    // Say you have an array for which the ith element is the price of a given stock on day i.
+    // If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock),
+    // design an algorithm to find the maximum profit.
+
+    // Input: [7,1,5,3,6,4]
+    // Output: 5
+
+    public int maxProfit(int[] nums) {
+        int maxProfit = 0;
+        int smallestStock = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            int transactionProfit = nums[i] - smallestStock;
+            // kepp track of the smallest stock
+            if (nums[i] < smallestStock) smallestStock = nums[i];
+            // keep track of largest profit
+            else if (nums[i] - smallestStock > maxProfit) maxProfit = transactionProfit;
+        }
+        return maxProfit;
+    }
+
+    // Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0?
+    // Find all unique triplets in the array which gives the sum of zero.
+
+    // Input: nums = [-1,0,1,2,-1,-4]
+    // Output: [[-1,-1,2],[-1,0,1]]
+
     public List<List<Integer>> threeSum (int[] nums) {
 
         // if nums array is less than 3, then return empty list []
