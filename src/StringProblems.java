@@ -117,6 +117,28 @@ public class StringProblems {
         return true;
     }
 
+    // Given two strings s and t , write a function to determine if t is an anagram of s.
+
+    // Input: s = "anagram", t = "nagaram"     Input: s = "rat", t = "car"
+    // Output: true                            Output: false
+
+    public boolean isAnagram(String s, String t) {
+
+        if (t.length() > s.length()) return false;
+
+        ArrayList<Character> characters = new ArrayList<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            characters.add(i, s.charAt(i));
+        }
+
+        for (int i = 0; i < t.length(); i++) {
+            if (characters.contains(t.charAt(i))) {
+                characters.remove(Character.valueOf(t.charAt(i)));
+            }
+        }
+        return characters.size() == 0;
+    }
 }
 
 

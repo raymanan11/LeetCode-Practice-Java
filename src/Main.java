@@ -4,10 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayProblems arrProb = new ArrayProblems();
+        StringProblems s = new StringProblems();
 
-        int[] arr = {1,2};
-        int result = arrProb.maxSub(arr);
+        boolean result = s.isAnagram("a", "ab");
 
         System.out.println(result);
     }
