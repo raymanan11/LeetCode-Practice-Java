@@ -4,12 +4,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayProblems arr = new ArrayProblems();
+        StringProblems stringProblems = new StringProblems();
 
-        int[] nums = {7,1,5,3,6,4};
-        int result = arr.maxProfit(nums);
+        String s = ")(){}";
 
-        System.out.println(result);
+        boolean result = stringProblems.isValid(s);
+
+        if (result) {
+            System.out.println("true");
+        }
+        else {
+            System.out.println("false");
+        }
     }
 
 }
