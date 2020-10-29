@@ -4,18 +4,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        StringProblems stringProblems = new StringProblems();
+        ArrayProblems arrProb = new ArrayProblems();
 
-        String s = "0P";
+        int[] arr = {1,2};
+        int result = arrProb.maxSub(arr);
 
-        boolean result = stringProblems.isPalindrome(s);
-
-        if (result) {
-            System.out.println("true");
-        }
-        else {
-            System.out.println("false");
-        }
+        System.out.println(result);
     }
 
 }

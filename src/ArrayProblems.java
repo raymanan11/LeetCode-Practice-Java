@@ -3,6 +3,32 @@ import java.util.*;
 
 public class ArrayProblems {
 
+    //    Given an integer array nums, find the contiguous subarray (containing at least one number)
+    //    which has the largest sum and return its sum.
+
+    //    Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+    //    Output: 6
+    //    Explanation: [4,-1,2,1] has the largest sum = 6.
+
+    //    Input: nums = [-2147483647]
+    //    Output: -2147483647
+
+    public int maxSubArray(int[] nums) {
+
+        if (nums.length == 1) return nums[0];
+
+        int largest = nums[0];
+        int max_end = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            max_end = Math.max(nums[i], nums[i] + max_end);
+            largest = Math.max(largest, max_end);
+        }
+        return largest;
+    }
+
+
+
     // Say you have an array for which the ith element is the price of a given stock on day i.
     // If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock),
     // design an algorithm to find the maximum profit.
