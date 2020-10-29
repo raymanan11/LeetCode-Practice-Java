@@ -91,6 +91,32 @@ public class StringProblems {
 
         return openBrackets.isEmpty();
     }
+
+    // Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+    // Note: For the purpose of this problem, we define empty string as valid palindrome.
+
+    // Input: "A man, a plan, a canal: Panama"
+    // Output: true
+
+    // Input: "race a car"
+    // Output: false
+
+    public boolean isPalindrome(String s) {
+        s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        int middle = s.length() / 2;
+        System.out.println(s);
+        int j;
+        for (int i = 0; i < middle; i++) {
+            j = s.length() - 1 - i;
+            if (s.charAt(i) != s.charAt(j)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }
 
 

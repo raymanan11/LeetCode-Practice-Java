@@ -6,9 +6,9 @@ public class Main {
 
         StringProblems stringProblems = new StringProblems();
 
-        String s = ")(){}";
+        String s = "0P";
 
-        boolean result = stringProblems.isValid(s);
+        boolean result = stringProblems.isPalindrome(s);
 
         if (result) {
             System.out.println("true");
