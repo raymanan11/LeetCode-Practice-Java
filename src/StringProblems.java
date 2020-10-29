@@ -126,18 +126,13 @@ public class StringProblems {
 
         if (t.length() > s.length()) return false;
 
-        ArrayList<Character> characters = new ArrayList<>();
+        char[] sArr = s.toCharArray();
+        char[] tArr = t.toCharArray();
 
-        for (int i = 0; i < s.length(); i++) {
-            characters.add(i, s.charAt(i));
-        }
+        Arrays.sort(sArr);
+        Arrays.sort(tArr);
 
-        for (int i = 0; i < t.length(); i++) {
-            if (characters.contains(t.charAt(i))) {
-                characters.remove(Character.valueOf(t.charAt(i)));
-            }
-        }
-        return characters.size() == 0;
+        return Arrays.equals(sArr, tArr);
     }
 }
 
