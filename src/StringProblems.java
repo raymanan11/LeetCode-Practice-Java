@@ -134,6 +134,26 @@ public class StringProblems {
 
         return Arrays.equals(sArr, tArr);
     }
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+
+        Map<String, List> result = new HashMap<>();
+
+        for (int i = 0; i < strs.length; i++) {
+            char[] cArr = strs[i].toCharArray();
+            Arrays.sort(cArr);
+            String cArrString = String.valueOf(cArr);
+            // if the ordered cArr string is not in the map, then you add it to the map with a new Arraylist
+            if (!result.containsKey(cArrString)) result.put(cArrString, new ArrayList());
+            // at this point the map will have the key since it'll either be added in prev step or already added
+            // then you get the ArrayList from the key and add the corresponding string
+            result.get(cArrString).add(strs[i]);
+        }
+
+        return new ArrayList(result.values());
+
+    }
+
 }
 
 

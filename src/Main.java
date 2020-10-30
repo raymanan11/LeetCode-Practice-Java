@@ -6,9 +6,11 @@ public class Main {
 
         StringProblems s = new StringProblems();
 
-        boolean result = s.isAnagram("a", "ab");
+        String[] arr = {"eat","tea","tan","ate","nat","bat"};
 
+        List<List<String>> result = s.groupAnagrams(arr);
         System.out.println(result);
+
     }
 
 }
