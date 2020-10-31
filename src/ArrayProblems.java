@@ -90,4 +90,27 @@ public class ArrayProblems {
 
     }
 
+    // Get the four largest numbers in the array and return their sum
+    // If array has less than four numbers, return their sums
+
+    // Input: {0, -1, 4, 2, 7,-3, 10}
+    // Output: 23
+
+    public int fourLargest(int[] nums) {
+        int result = 0;
+        if (nums.length < 4) {
+            for (int i = 0; i < nums.length; i++) {
+                result = result + nums[i];
+            }
+            return result;
+        }
+
+        Arrays.sort(nums);
+
+        for (int i = 0; i < 4; i++) {
+            result = result + nums[nums.length - 1 - i];
+        }
+        return result;
+    }
+
 }

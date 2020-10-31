@@ -135,6 +135,11 @@ public class StringProblems {
         return Arrays.equals(sArr, tArr);
     }
 
+    // Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+    // Input: strs = ["eat","tea","tan","ate","nat","bat"]
+    // Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
     public List<List<String>> groupAnagrams(String[] strs) {
 
         Map<String, List> result = new HashMap<>();

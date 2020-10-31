@@ -4,13 +4,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        StringProblems s = new StringProblems();
+        ArrayProblems arrayProblems = new ArrayProblems();
 
-        String[] arr = {"eat","tea","tan","ate","nat","bat"};
+        int[] nums = {0, -1, 4, 2, 7,-3, 10};
 
-        List<List<String>> result = s.groupAnagrams(arr);
+        int result = arrayProblems.fourLargest(nums);
+
         System.out.println(result);
 
     }
-
 }
