@@ -27,8 +27,6 @@ public class ArrayProblems {
         return largest;
     }
 
-
-
     // Say you have an array for which the ith element is the price of a given stock on day i.
     // If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock),
     // design an algorithm to find the maximum profit.
@@ -111,6 +109,25 @@ public class ArrayProblems {
             result = result + nums[nums.length - 1 - i];
         }
         return result;
+    }
+
+    // If the sequence is Arithmetic, return "Arithmetic", if the sequence is Geometric, return "Geometric"
+    // If the sequence follows neither pattern, return -1
+
+    // Input: {5,10,15}      {2,6,18,54}          {2,4,16,24}
+    // Output: Arithmetic    Output: Geometric    Output: -1
+
+    public Object arrayChallenge(int[] nums) {
+        Set<Integer> arithmetic = new HashSet<>();
+        Set<Integer> geometric = new HashSet<>();
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            arithmetic.add(nums[nums.length - 1 - i] - nums[nums.length - 2 - i]);
+            geometric.add(nums[nums.length - 1 - i] / nums[nums.length - 2 - i]);
+        }
+        if (arithmetic.size() == 1) return "Arithmetic";
+        else if (geometric.size() == 1) return "Geometric";
+        else return -1;
     }
 
 }
