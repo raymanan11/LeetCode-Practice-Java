@@ -4,11 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayProblems arrayProblems = new ArrayProblems();
+        StringProblems stringProblems = new StringProblems();
 
-        int[] nums = {2,4,16,24};
-
-        Object result = arrayProblems.arrayChallenge(nums);
+        String[] strs = {"c","acc","ccc"};
+        String result = stringProblems.longestCommonPrefix(strs);
 
         System.out.println(result);
 
