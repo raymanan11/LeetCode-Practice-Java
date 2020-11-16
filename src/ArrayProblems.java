@@ -130,4 +130,31 @@ public class ArrayProblems {
         else return -1;
     }
 
+    // Given an array of integers nums sorted in ascending order,
+    // find the starting and ending position of a given target value.
+    // If target is not found in the array, return [-1, -1].
+
+    // Input: nums = [5,7,7,8,8,10], target = 8      Input: nums = [5,7,7,8,8,10], target = 6
+    // Output: [3,4]                                 Output: [-1,-1]
+
+    public int[] searchRange(int[] nums, int target) {
+        int[] result = {-1, -1};
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target) {
+                result[0] = i;
+                break;
+            }
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[nums.length - 1 - i] == target) {
+                result[1] = nums.length - 1 - i;
+                break;
+            }
+        }
+
+        return result;
+    }
+
 }
