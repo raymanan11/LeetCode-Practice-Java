@@ -173,6 +173,51 @@ public class StringProblems {
         return prefix;
     }
 
+    // Determine whether an integer is a palindrome.
+    // An integer is a palindrome when it reads the same backward as forward.
+
+
+    // Input: x = 121    Input: x = -121
+    // Output: true      Output: false
+
+    public boolean isPalindrome(int x) {
+        if (x < 0) return false;
+
+        String s = String.valueOf(x);
+        for (int i = 0; i < s.length() / 2; i++) {
+            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) return false;
+        }
+        return true;
+    }
+
+    // Given a string, find the first non-repeating character in it and return its index.
+    // If it doesn't exist, return -1.
+
+    // s = "leetcode"
+    // return 0.
+
+    // s = "loveleetcode"
+    // return 2.
+
+    public int firstUniqChar(String s) {
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        // put the characters in the map with the character's latest occurrence as the value
+        for (int i = 0; i < s.length(); i++) {
+            map.put(s.charAt(i), i);
+        }
+
+        char c;
+        for (int i = 0; i < s.length(); i++) {
+            c = s.charAt(i);
+            // if the first occurrence of that character equals the latest occurrence of the character in map
+            // return it
+            if (s.indexOf(c) == map.get(c)) return i;
+        }
+        return -1;
+    }
+
 }
 
 
