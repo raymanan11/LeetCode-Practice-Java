@@ -218,6 +218,18 @@ public class StringProblems {
         return -1;
     }
 
+    // Given a string s consists of some words separated by spaces,
+    // return the length of the last word in the string. If the last word does not exist, return 0.
+
+    // Input: s = "Hello World"
+    // Output: 5
+
+    public int lengthOfLastWord(String s) {
+        String[] result = s.split(" ");
+        if (result.length == 0) return 0;
+        return result[result.length - 1].length();
+    }
+
 }
 
 
