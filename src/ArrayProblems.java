@@ -184,23 +184,14 @@ public class ArrayProblems {
     // Output: 2, nums = [2,2]             Output: 5, nums = [0,1,4,0,3]
 
     public int removeElement(int[] nums, int val) {
-        Arrays.sort(nums);
-        int size = 0;
-        int i = 0;
-        for (int j = 0; j < nums.length; j++) {
-            if (nums[j] == val) size++;
-        }
-        while (i < nums.length - 1) {
-            int k = i;
-            while (nums[k] == val && k < nums.length - 1) {
-                k++;
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[j] = nums[i];
+                j++;
             }
-            int temp = nums[i];
-            nums[i] = nums[k];
-            nums[k] = temp;
-            i++;
         }
-        return nums.length - size;
+        return j;
     }
 
 }
