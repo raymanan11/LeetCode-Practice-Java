@@ -230,6 +230,42 @@ public class StringProblems {
         return result[result.length - 1].length();
     }
 
+    // Given two binary strings a and b, return their sum as a binary string.
+    // Input: a = "1010"
+    //        b = "1011"
+    // Output: "10101"
+
+    public String addBinary(String a, String b) {
+        int carry = 0;
+        int maxLength = a.length() >= b.length() ? a.length() : b.length();
+
+        // Get the biggest string between the two
+        String biggest = maxLength == a.length() ? a : b;
+        // Get the smallest string between the two
+        String smallest = maxLength == a.length() ? b : a;
+
+        // make the smallest string have same length as biggest string by adding zeros to beginning of string
+        int diff = maxLength - smallest.length();
+        for (int i = 0; i < diff; i++) {
+            smallest = "0".concat(smallest);
+        }
+
+        String result = "";
+
+        // addition
+        for (int i = 0; i < maxLength; i++) {
+            int aNum = Character.getNumericValue(biggest.charAt(biggest.length() - 1 - i));
+            int bNum = Character.getNumericValue(smallest.charAt(smallest.length() - 1 - i));
+            int sum = aNum + bNum + carry;
+            carry = sum / 2;
+            result = String.valueOf(sum % 2).concat(result);
+        }
+        if (carry > 0) result = String.valueOf(carry).concat(result);
+        return result;
+    }
+
+
+
 }
 
 
