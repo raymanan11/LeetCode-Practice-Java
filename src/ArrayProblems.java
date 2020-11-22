@@ -212,4 +212,31 @@ public class ArrayProblems {
         return result;
     }
 
+    // Given an unsorted integer array nums, find the smallest missing positive integer.
+
+    // Input: nums = [1,2,0]     Input: nums = [3,4,-1,1]
+    // Output: 3                 Output: 2
+
+    public int firstMissingPositive(int[] nums) {
+        Arrays.sort(nums);
+
+        ArrayList<Integer> uniqueNumbers = new ArrayList<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (!uniqueNumbers.contains(nums[i])) uniqueNumbers.add(nums[i]);
+        }
+
+        System.out.println(uniqueNumbers);
+
+        int currentPositiveNum = 1;
+        for (int i = 0; i < uniqueNumbers.size(); i++) {
+            if (uniqueNumbers.get(i) <= 0) continue;
+            if (uniqueNumbers.get(i) == currentPositiveNum) {
+                currentPositiveNum++;
+            }
+            else return currentPositiveNum;
+        }
+        return currentPositiveNum;
+    }
+
 }
