@@ -264,7 +264,44 @@ public class StringProblems {
         return result;
     }
 
+    // The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this:
+    // (you may want to display this pattern in a fixed font for better legibility)
 
+    // P   A   H   N
+    // A P L S I I G
+    // Y   I   R
+
+    // Input: s = "PAYPALISHIRING", numRows = 4
+    // Output: "PINALSIGYAHRPI"
+    // Explanation:
+    // P     I    N
+    // A   L S  I G
+    // Y A   H R
+    // P     I
+
+    // 0, 1, 2
+    // 3, 2, 1
+    public String convert(String s, int numRows) {
+        if (numRows == 1) return s;
+        String result = "";
+        Map<Integer, String> map = new HashMap<>();
+        for (int i = 0; i < numRows; i++) {
+            map.put(i, "");
+        }
+        int num = numRows - 1;
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            map.replace(count, map.get(count).concat(String.valueOf(s.charAt(i))));
+            if (num == numRows - 1) count++;
+            else if (num == 0) count--;
+            if (count == numRows - 1) num = 0;
+            if (count == 0) num = numRows - 1;
+        }
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            result = result.concat(entry.getValue());
+        }
+        return result;
+    }
 
 }
 
