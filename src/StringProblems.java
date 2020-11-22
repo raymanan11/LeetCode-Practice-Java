@@ -284,21 +284,23 @@ public class StringProblems {
     public String convert(String s, int numRows) {
         if (numRows == 1) return s;
         String result = "";
-        Map<Integer, String> map = new HashMap<>();
+        Map<Integer, List<Character>> map = new HashMap<>();
         for (int i = 0; i < numRows; i++) {
-            map.put(i, "");
+            map.put(i, new ArrayList<>());
         }
         int num = numRows - 1;
         int count = 0;
         for (int i = 0; i < s.length(); i++) {
-            map.replace(count, map.get(count).concat(String.valueOf(s.charAt(i))));
+            map.get(count).add(s.charAt(i));
             if (num == numRows - 1) count++;
             else if (num == 0) count--;
             if (count == numRows - 1) num = 0;
             if (count == 0) num = numRows - 1;
         }
-        for (Map.Entry<Integer, String> entry : map.entrySet()) {
-            result = result.concat(entry.getValue());
+        for (Map.Entry<Integer, List<Character>> entry : map.entrySet()) {
+            for(char c : entry.getValue()) {
+                result = result.concat(String.valueOf(c));
+            }
         }
         return result;
     }
