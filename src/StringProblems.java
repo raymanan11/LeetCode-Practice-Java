@@ -279,8 +279,6 @@ public class StringProblems {
     // Y A   H R
     // P     I
 
-    // 0, 1, 2
-    // 3, 2, 1
     public String convert(String s, int numRows) {
         if (numRows == 1) return s;
         String result = "";
@@ -303,6 +301,24 @@ public class StringProblems {
             }
         }
         return result;
+    }
+
+    // Given an input string s, reverse the order of the words.
+    // A word is defined as a sequence of non-space characters.
+    // The words in s will be separated by at least one space.
+    // Return a string of the words in reverse order concatenated by a single space.
+
+    // Input: s = "  Bob    Loves  Alice   "       Input: s = "  hello world  "
+    // Output: "Alice Loves Bob"                   Output: "world hello"
+
+    public String reverseWords(String s) {
+        String[] sArr = s.split(" ");
+        String result = "";
+        for (int i = 0; i < sArr.length; i++) {
+            String currentWord = sArr[sArr.length - 1 - i];
+            if (currentWord.length() > 0) result = result.concat(currentWord + " ");
+        }
+        return result.substring(0, result.length() - 1);
     }
 
 }
