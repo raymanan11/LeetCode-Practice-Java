@@ -321,6 +321,18 @@ public class StringProblems {
         return result.substring(0, result.length() - 1);
     }
 
+    // Write a function that reverses a string. The input string is given as an array of characters char[].
+
+    // Input: ["h","e","l","l","o"]
+    // Output: ["o","l","l","e","h"]
+
+    public void reverseString(char[] s) {
+        for (int i = 0; i < s.length / 2; i++) {
+            char temp = s[i];
+            s[i] = s[s.length - 1 - i];
+            s[s.length - 1 - i] = temp;
+        }
+    }
 }
 
 
