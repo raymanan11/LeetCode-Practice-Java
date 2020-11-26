@@ -333,6 +333,31 @@ public class StringProblems {
             s[s.length - 1 - i] = temp;
         }
     }
+
+    // Write a function that takes a string as input and reverse only the vowels of a string.
+
+    // Input: "hello"     Input: "leetcode"
+    // Output: "holle"    Output: "leotcede"
+
+
+    public String reverseVowels(String s) {
+        char[] cArr = s.toCharArray();
+        ArrayList<Character> vowels = new ArrayList<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));
+        ArrayList<Integer> voweInindexes = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (vowels.contains(s.charAt(i))) voweInindexes.add(i);
+        }
+        for (int i = 0; i < voweInindexes.size() / 2; i++) {
+            char temp = cArr[voweInindexes.get(i)];
+            cArr[voweInindexes.get(i)] = cArr[voweInindexes.get(voweInindexes.size() - 1 - i)];
+            cArr[voweInindexes.get(voweInindexes.size() - 1 - i)] = temp;
+        }
+        String result = "";
+        for (int i = 0; i < cArr.length; i++) {
+            result = result.concat(String.valueOf(cArr[i]));
+        }
+        return result;
+    }
 }
 
 
