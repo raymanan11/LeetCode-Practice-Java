@@ -1,16 +1,16 @@
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        StringProblems stringProblems = new StringProblems();
-        char[] c = {'h','e','l','l','o'};
-        stringProblems.reverseString(c);
+//        StringProblems stringProblems = new StringProblems();
+//        char[] c = {'h','e','l','l','o'};
+//        stringProblems.reverseString(c);
 
-//        ArrayProblems arrayProblems = new ArrayProblems();
-//
-//        int[] nums = {-5, -3, -1, 1, 4, 6};
-//        int result = arrayProblems.searchInsert(nums, -6);
-//        System.out.println(result);
-
+        ArrayProblems arrayProblems = new ArrayProblems();
+        int[] nums = {0,0,1,1,1,1,2,3,3};
+        int result = arrayProblems.removeDuplicates(nums);
+        System.out.println(result);
     }
 }

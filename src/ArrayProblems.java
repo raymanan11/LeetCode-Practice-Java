@@ -258,4 +258,32 @@ public class ArrayProblems {
         }
         return nums.length;
     }
+
+    // Given a sorted array nums, remove the duplicates in-place such that duplicates
+    // appeared at most twice and return the new length.
+
+    // Input: nums = [0,0,1,1,1,1,2,3,3]
+    // Output: 7, nums = [0,0,1,1,2,3,3]
+
+    public int removeDuplicates(int[] nums) {
+        int i = 0;
+        int count = 1;
+
+        for (int j = 1; j < nums.length; j++) {
+            if (nums[i] == nums[j] && count < 2) {
+                i++;
+                count++;
+                nums[i] = nums[j];
+            }
+            if (nums[i] != nums[j]) {
+                i++;
+                count = 1;
+                nums[i] = nums[j];
+            }
+        }
+
+        return i + 1;
+    }
+
+
 }
