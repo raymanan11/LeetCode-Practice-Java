@@ -15,5 +15,9 @@ public class Main {
 //        int result = arrayProblems.removeDuplicates(nums);
 //        System.out.println(result);
 
+        Misc misc = new Misc();
+        int result = misc.reverse(1534236469);
+        System.out.println(result);
+
     }
 }
