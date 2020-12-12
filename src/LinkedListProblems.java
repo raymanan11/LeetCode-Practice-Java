@@ -27,6 +27,54 @@ public class LinkedListProblems {
         return dummy.next;
     }
 
+    // Merge two sorted linked lists and return it as a new sorted list.
+    // The new list should be made by splicing together the nodes of the first two lists.
+
+    // Input: l1 = [1,2,4], l2 = [1,3,4]
+    // Output: [1,1,2,3,4,4]
+
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+
+        ListNode dummy = new ListNode(0);
+        ListNode curr = dummy;
+        ListNode p = l1;
+        ListNode q = l2;
+
+        while (p != null || q != null) {
+
+            // if p or q is null add the one that's not null into LL
+            if (p == null || q == null) {
+                curr.next = (p != null) ? new ListNode(p.val) : new ListNode(q.val);
+                if (p != null) p = p.next;
+                else q = q.next;
+                curr = curr.next;
+                continue;
+            }
+
+            // cases where values are not null for both
+            int num1 = p.val;
+            int num2 = q.val;
+
+            if (num1 < num2) {
+                curr.next = new ListNode(num1);
+                p = p.next;
+            }
+            else if (num1 > num2) {
+                curr.next = new ListNode(num2);
+                q = q.next;
+            }
+            else {
+                curr.next = new ListNode(num1);
+                curr.next.next = new ListNode(num2);
+                curr = curr.next;
+                q = q.next;
+                p = p.next;
+            }
+            curr = curr.next;
+        }
+        return dummy.next;
+    }
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummyHead = new ListNode(0);
         ListNode curr = dummyHead;
