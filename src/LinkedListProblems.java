@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class LinkedListProblems {
@@ -101,6 +104,28 @@ public class LinkedListProblems {
         ListNode() {}
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+    
+    // Given a linked list, swap every two adjacent nodes and return its head.
+
+    // Input: head = [1,2,3,4]
+    // Output: [2,1,4,3]
+
+    public ListNode swapPairs(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode current = dummy;
+
+        while (current.next != null && current.next.next != null) {
+            ListNode first = current.next;
+            ListNode second = first.next;
+            current.next = second;
+            second.next = first;
+            first.next = second.next;
+            current = first;
+        }
+
+        return dummy.next;
     }
 
 }
