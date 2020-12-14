@@ -10,14 +10,13 @@ public class Main {
 //        String result = stringProblems.reverseVowels(s);
 //        System.out.println(result);
 
-//        ArrayProblems arrayProblems = new ArrayProblems();
-//        int[] nums = {0,0,1,1,1,1,2,3,3};
-//        int result = arrayProblems.removeDuplicates(nums);
-//        System.out.println(result);
-
-        Misc misc = new Misc();
-        int result = misc.reverse(1534236469);
+        ArrayProblems arrayProblems = new ArrayProblems();
+        int[] nums = {1,2,3,1,2,3};
+        boolean result = arrayProblems.containsNearbyDuplicate(nums, 2);
         System.out.println(result);
 
+//        Misc misc = new Misc();
+//        int result = misc.divide(-2147483648, -1);
+//        System.out.println(result);
     }
 }

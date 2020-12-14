@@ -105,7 +105,7 @@ public class LinkedListProblems {
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
-    
+
     // Given a linked list, swap every two adjacent nodes and return its head.
 
     // Input: head = [1,2,3,4]

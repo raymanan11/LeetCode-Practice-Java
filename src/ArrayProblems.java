@@ -285,5 +285,56 @@ public class ArrayProblems {
         return i + 1;
     }
 
+    // Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
+
+    // Input: 5
+    // Output:
+    //        [
+    //        [1],
+    //        [1,1],
+    //        [1,2,1],
+    //        [1,3,3,1],
+    //        [1,4,6,4,1]
+    //        ]
+
+    public List<List<Integer>> generate(int numRows) {
+
+        List<List<Integer>> result = new ArrayList<>();
+        if (numRows == 0) return result;
+        result.add(new ArrayList<>());
+        result.get(0).add(1);
+
+        List<Integer> numbers;
+        List<Integer> prev;
+
+        for (int i = 1; i < numRows; i++) {
+            numbers = new ArrayList<>();
+            prev = result.get(i - 1);
+            numbers.add(1);
+            for (int j = 1; j < i; j++) {
+                int number = prev.get(j - 1) + prev.get(j);
+                numbers.add(number);
+            }
+            numbers.add(1);
+            result.add(numbers);
+        }
+        return result;
+    }
+
+    // Given an array of integers and an integer k, find out whether there are two distinct indices i and j
+    // in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.
+
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                if (i - map.get(nums[i]) <= k && i != map.get(nums[i])) return true;
+            }
+            map.put(nums[i], i);
+        }
+        return false;
+    }
 
 }

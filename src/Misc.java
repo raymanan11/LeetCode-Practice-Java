@@ -31,6 +31,40 @@ public class Misc {
         return (int) numResult;
     }
 
+    // **
+    // Given two integers dividend and divisor, divide two integers without
+    // using multiplication, division, and mod operator.
 
+    // Return the quotient after dividing dividend by divisor.
+
+    // Input: dividend = 10, divisor = 3
+    // Output: 3
+    // Explanation: 10/3 = truncate(3.33333..) = 3.
+
+    public int divide(int dividend, int divisor) {
+        if (dividend == Integer.MIN_VALUE) {
+            if (divisor == -1) return Integer.MAX_VALUE;
+            else if (divisor == 1) return dividend;
+        }
+        if (dividend == Integer.MAX_VALUE) {
+            if (divisor == -1) return 0 - Integer.MAX_VALUE;
+            else if (divisor == 1) return Integer.MAX_VALUE;
+        }
+        int count = 0;
+        boolean negative = true;
+        if (dividend >= 0 && divisor >= 0 || dividend < 0 && divisor < 0) negative = false;
+
+        if (dividend < 0) dividend = 0 - dividend;
+        if (divisor < 0) divisor = 0 - divisor;
+
+        int setDivisor = divisor;
+
+        while (divisor <= dividend) {
+            count++;
+            divisor += setDivisor;
+        }
+        if (negative) return count * -1;
+        else return count;
+    }
 
 }
