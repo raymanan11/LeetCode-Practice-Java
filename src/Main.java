@@ -11,9 +11,9 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int[] nums = {1,2,3,1,2,3};
-        boolean result = arrayProblems.containsNearbyDuplicate(nums, 2);
-        System.out.println(result);
+        int[] nums = {1,2,3,4};
+        int[][] nums2 = {{1,0},{-3,1},{-4,0},{2,3}};
+        int[] result = arrayProblems.sumEvenAfterQueries(nums, nums2);
 
 //        Misc misc = new Misc();
 //        int result = misc.divide(-2147483648, -1);
