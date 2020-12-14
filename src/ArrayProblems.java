@@ -389,4 +389,29 @@ public class ArrayProblems {
         return result;
     }
 
+    // Given an integer array sorted in non-decreasing order, there is exactly one integer in the array that occurs more than 25% of the time.
+    // Return that integer.
+
+    // Input: arr = [1,2,2,6,6,6,6,7,10]
+    // Output: 6
+
+    public int findSpecialInteger(int[] arr) {
+        Map<Integer, Integer> repeating = new HashMap<>();
+
+        int max = 1;
+
+        int arrSize = arr.length;
+        int twentyFive = (int) Math.floor(arrSize * .25);
+        for (int i = 0; i < arrSize; i++) {
+            if (!repeating.containsKey(arr[i])) repeating.put(arr[i], 1);
+            else {
+                int num = repeating.get(arr[i]);
+                max = Math.max(max, num + 1);
+                repeating.put(arr[i], num + 1);
+                if (max > twentyFive) return arr[i];
+            }
+        }
+        return max;
+    }
+
 }
