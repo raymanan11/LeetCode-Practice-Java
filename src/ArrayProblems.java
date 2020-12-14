@@ -321,6 +321,32 @@ public class ArrayProblems {
         return result;
     }
 
+    // Given an integer rowIndex, return the rowIndexth row of the Pascal's triangle.
+    // Notice that the row index starts from 0.
+
+    public List<Integer> getRow(int numRows) {
+        List<List<Integer>> result = new ArrayList<>();
+        result.add(new ArrayList<>());
+        result.get(0).add(1);
+
+        for (int i = 1; i < numRows + 1; i++) {
+            List<Integer> pascalRow = new ArrayList<>();
+            List<Integer> previousRow = result.get(i - 1);
+            pascalRow.add(1);
+
+            for (int j = 1; j < i; j++) {
+                int numberToAdd = previousRow.get(j - 1) + previousRow.get(j);
+                pascalRow.add(numberToAdd);
+            }
+
+            pascalRow.add(1);
+            result.add(pascalRow);
+        }
+
+        return result.get(numRows);
+    }
+
+
     // Given an array of integers and an integer k, find out whether there are two distinct indices i and j
     // in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.
 
