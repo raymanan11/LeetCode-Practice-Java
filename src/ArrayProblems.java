@@ -464,4 +464,46 @@ public class ArrayProblems {
         return count;
     }
 
+    // You have a bomb to defuse, and your time is running out! Your informer will provide you with a circular array code of length of n and a key k.
+
+    // To decrypt the code, you must replace every number. All the numbers are replaced simultaneously.
+
+    // If k > 0, replace the ith number with the sum of the next k numbers.
+    // If k < 0, replace the ith number with the sum of the previous k numbers.
+    // If k == 0, replace the ith number with 0.
+
+    // Input: code = [5,7,1,4], k = 3
+    // Output: [12,10,16,13]
+    // Explanation: Each number is replaced by the sum of the next 3 numbers.
+    // The decrypted code is [7+1+4, 1+4+5, 4+5+7, 5+7+1]. Notice that the numbers wrap around.
+    // To get 5 after 4, 3 (index) mod 4 (length of array), 7 -> 4 mod 4 = 0
+
+    public int[] decrypt(int[] code, int k) {
+        int[] result = new int[code.length];
+        int size = code.length;
+        for (int i = 0; i < size; i++) {
+            int total = 0;
+            if (k > 0) {
+                for (int j = i + 1; j <= i + k; j++) {
+                    total += code[j % size];
+                }
+                System.out.println(total);
+                result[i] = total;
+            }
+            else if (k < 0) {
+                for (int j = i - 1; j >= i + k; j--) {
+                    total += code[(j % size + size) % size];
+                }
+                System.out.println();
+                result[i] = total;
+            }
+            else {
+                for (int j = 0; j < size; j++) {
+                    result[i] = 0;
+                }
+            }
+        }
+        return result;
+    }
+
 }

@@ -11,8 +11,11 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int result = arrayProblems.countLargestGroup(24);
-        System.out.println(result);
+        int[] nums = {2,4,9,3};
+        int[] result = arrayProblems.decrypt(nums, -2);
+        for (int num : result) {
+            System.out.print(num + " ");
+        }
 //        Misc misc = new Misc();
 //        int result = misc.divide(-2147483648, -1);
 //        System.out.println(result);
