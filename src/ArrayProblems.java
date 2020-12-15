@@ -414,4 +414,54 @@ public class ArrayProblems {
         return max;
     }
 
+    // Given an array arr, replace every element in that array with the greatest element
+    // among the elements to its right, and replace the last element with -1.
+    // After doing so, return the array
+
+    // Input: arr = [17,18,5,4,6,1]
+    // Output: [18,6,6,6,1,-1]
+
+    public int[] replaceElements(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int max = 0;
+            for (int j = i + 1; j < arr.length; j++) {
+                max = Math.max(max, arr[j]);
+            }
+            arr[i] = max;
+        }
+        arr[arr.length - 1] = -1;
+        return arr;
+    }
+
+    public int countLargestGroup(int n) {
+        Map<Integer, Integer> group = new HashMap<>();
+        int max = 0;
+        for (int i = 1; i <= n; i++) {
+            if (i < 10) {
+                max = 1;
+                group.put(i, 1);
+            }
+            else {
+                int total = 0;
+                int inum = i;
+                while (inum != 0) {
+                    total += inum % 10;
+                    inum /= 10;
+                }
+                if (!group.containsKey(total)) {
+                    group.put(total, 1);
+                    continue;
+                }
+                int num = group.get(total) + 1;
+                group.put(total, num);
+                max = Math.max(max, num);
+            }
+        }
+        int count = 0;
+        for (Map.Entry<Integer, Integer> map : group.entrySet()) {
+            if (map.getValue() == max) count++;
+        }
+        return count;
+    }
+
 }

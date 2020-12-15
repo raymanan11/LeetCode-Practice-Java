@@ -11,10 +11,8 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int[] nums = {1,2,2,6,6,6,6,7,10};
-        int result = arrayProblems.findSpecialInteger(nums);
+        int result = arrayProblems.countLargestGroup(24);
         System.out.println(result);
-
 //        Misc misc = new Misc();
 //        int result = misc.divide(-2147483648, -1);
 //        System.out.println(result);
