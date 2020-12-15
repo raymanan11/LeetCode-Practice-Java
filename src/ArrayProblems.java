@@ -506,4 +506,30 @@ public class ArrayProblems {
         return result;
     }
 
+    // Given an array of integers arr, a lucky integer is an integer which has a frequency in the array equal to its value.
+    // Return a lucky integer in the array. If there are multiple lucky integers return the largest of them.
+    // If there is no lucky integer return -1
+
+    // Input: arr = [2,2,3,4]
+    // Output: 2
+    // Explanation: The only lucky number in the array is 2 because frequency[2] == 2.
+
+    public int findLucky(int[] arr) {
+
+        Map<Integer, Integer> luckyNumberCount = new HashMap<>();
+        int max = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (!luckyNumberCount.containsKey(arr[i])) luckyNumberCount.put(arr[i], 1);
+            else {
+                int num = luckyNumberCount.get(arr[i]);
+                luckyNumberCount.put(arr[i], num + 1);
+            }
+        }
+        for (Map.Entry<Integer, Integer> entry : luckyNumberCount.entrySet()) {
+            if (entry.getKey() == entry.getValue()) max = Math.max(max, entry.getValue());
+        }
+        return max;
+
+    }
+
 }
