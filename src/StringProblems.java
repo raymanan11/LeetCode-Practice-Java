@@ -386,6 +386,19 @@ public class StringProblems {
         return true;
     }
 
+    // You are given a string s, return the number of segments in the string.
+    // A segment is defined to be a contiguous sequence of non-space characters.
+
+    public int countSegments(String s) {
+        if (s.equals("")) return 0;
+        int count = 0;
+        String[] arr = s.split(" ");
+        for (int i = 0; i < arr.length; i++) {
+            if (!arr[i].equals("")) count++;
+        }
+        return count;
+    }
+
 }
 
 
