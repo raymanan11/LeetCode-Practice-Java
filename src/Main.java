@@ -5,8 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         StringProblems stringProblems = new StringProblems();
-        String[] strings = {"mass","as","hero","superhero"};
-        List<String> result = stringProblems.stringMatching(strings);
+        boolean result = stringProblems.buddyStrings("aaaaaaabc", "aaaaaaacb");
         System.out.println(result);
 
 //        ArrayProblems arrayProblems = new ArrayProblems();

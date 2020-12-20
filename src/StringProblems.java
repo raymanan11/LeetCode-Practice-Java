@@ -492,6 +492,35 @@ public class StringProblems {
         return result;
     }
 
+    // Given two strings A and B of lowercase letters, return true if you can swap two letters in A
+    // so the result is equal to B, otherwise, return false.
+
+    // Input: A = "aaaaaaabc", B = "aaaaaaacb"         Input: A = "ab", B = "ab"
+    // Output: true                                    Output: false
+
+    public boolean buddyStrings(String A, String B) {
+
+        if (A.length() != B.length()) return false;
+
+        if (A.equals(B)) {
+            Set<Character> letters = new HashSet<>();
+            for(int i = 0; i < A.length(); i++) {
+                if (!letters.contains(A.charAt(i))) letters.add(A.charAt(i));
+                else return true;
+            }
+        }
+
+        List<Integer> indexes = new ArrayList<>();
+        for (int i = 0; i < A.length(); i++) {
+            if (A.charAt(i) != B.charAt(i)) indexes.add(i);
+        }
+
+        return indexes.size() == 2 &&
+                A.charAt(indexes.get(0)) == B.charAt(indexes.get(1)) &&
+                A.charAt(indexes.get(1)) == B.charAt(indexes.get(0));
+    }
+
+
 }
 
 
