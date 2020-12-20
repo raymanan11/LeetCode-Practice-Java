@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
 
         StringProblems stringProblems = new StringProblems();
-        boolean result = stringProblems.validPalindrome("qnpemmugscxpogaqatzjvmfssensnahzuazzkiguzppabkczxvgeevxzckbappzgikzzauzhansnessfmvjztaqagopxcsgummepnq");
+        String[] banned = {"bob", "hit"};
+        String result = stringProblems.mostCommonWord("Bob. hIt, baLl", banned);
         System.out.println(result);
 
 //        ArrayProblems arrayProblems = new ArrayProblems();

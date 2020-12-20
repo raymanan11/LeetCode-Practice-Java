@@ -399,6 +399,56 @@ public class StringProblems {
         return count;
     }
 
+    // Given a paragraph and a list of banned words, return the most frequent word that is not in the list of banned words.
+    // It is guaranteed there is at least one word that isn't banned, and that the answer is unique.
+
+    // Words in the list of banned words are given in lowercase, and free of punctuation.
+    // Words in the paragraph are not case sensitive.  The answer is in lowercase.
+
+    // Input:
+    // paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+    // banned = ["hit"]
+    // Output: "ball"
+    // Explanation:
+    //         "hit" occurs 3 times, but it is a banned word.
+    //         "ball" occurs twice (and no other word does), so it is the most frequent non-banned word in the paragraph.
+    // Note that words in the paragraph are not case sensitive,
+    // that punctuation is ignored (even if adjacent to words, such as "ball,"),
+    // and that "hit" isn't the answer even though it occurs more because it is banned.
+
+    public String mostCommonWord(String paragraph, String[] banned) {
+        paragraph = paragraph.replaceAll("[^a-zA-Z0-9]", " ").toLowerCase();
+        String[] arr = paragraph.split(" ");
+        Map<String, Integer> map = new HashMap<>();
+        ArrayList<String> bannedWords = new ArrayList<>();
+
+        Collections.addAll(bannedWords, banned);
+
+        for (String s : arr) {
+            if (s.equals("")) continue;
+            if (!map.containsKey(s)) map.put(s, 1);
+            else {
+                int recurring = map.get(s);
+                map.put(s, recurring + 1);
+            }
+        }
+
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+
+
+        for (int i = 0; i < list.size(); i++) {
+            Map.Entry<String, Integer> map1 = list.get(list.size() - 1 - i);
+            if (bannedWords.contains(map1.getKey())) {
+                System.out.println(map1.getKey());
+                continue;
+            }
+            System.out.println();
+            return map1.getKey();
+        }
+        return "";
+    }
+
 }
 
 
