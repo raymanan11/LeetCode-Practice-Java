@@ -449,6 +449,27 @@ public class StringProblems {
         return "";
     }
 
+    // Implement strStr().
+    // Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+    // Input: haystack = "hello", needle = "ll"
+    // Output: 2
+
+    public int strStr(String haystack, String needle) {
+        int needleSize = needle.length();
+        char start;
+        if (needleSize == 0) return 0;
+        else start = needle.charAt(0);
+
+        for (int i = 0; i < haystack.length(); i++) {
+            if (haystack.charAt(i) == start && (i + needleSize <= haystack.length())) {
+                String substringHaystack = haystack.substring(i, i + needleSize);
+                if (substringHaystack.equals(needle)) return i;
+            }
+        }
+        return -1;
+    }
+
 }
 
 
