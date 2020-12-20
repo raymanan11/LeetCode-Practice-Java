@@ -470,6 +470,28 @@ public class StringProblems {
         return -1;
     }
 
+    // Given an array of string words. Return all strings in words which is substring of another word in any order.
+    // String words[i] is substring of words[j], if can be obtained removing some characters to left and/or right side of words[j].
+
+    // Input: words = ["mass","as","hero","superhero"]
+    // Output: ["as","hero"]
+    // Explanation: "as" is substring of "mass" and "hero" is substring of "superhero".
+    //         ["hero","as"] is also a valid answer.
+
+    public List<String> stringMatching(String[] words) {
+        List<String> result = new ArrayList<>();
+        Set<String> uniqueSubstring = new HashSet<>();
+        for (int i = 0; i < words.length; i++) {
+            for (int j = 0; j < words.length; j++) {
+                if (words[i].contains(words[j]) && i != j) {
+                    uniqueSubstring.add(words[j]);
+                }
+            }
+        }
+        result.addAll(uniqueSubstring);
+        return result;
+    }
+
 }
 
 

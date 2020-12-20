@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
 
         StringProblems stringProblems = new StringProblems();
-        int result = stringProblems.strStr("", "");
+        String[] strings = {"mass","as","hero","superhero"};
+        List<String> result = stringProblems.stringMatching(strings);
         System.out.println(result);
 
 //        ArrayProblems arrayProblems = new ArrayProblems();
