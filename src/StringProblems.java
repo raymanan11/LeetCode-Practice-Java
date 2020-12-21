@@ -575,6 +575,35 @@ public class StringProblems {
         }
     }
 
+    // Given a non-empty string check if it can be constructed by taking a substring of it and
+    // appending multiple copies of the substring together.
+
+    // Input: "abcabcabcabc"
+    // Output: True
+    // Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
+
+    public boolean repeatedSubstringPattern(String s) {
+        int end = 1;
+        String sub = s.substring(0, end);
+        StringBuilder substring = new StringBuilder(sub);
+        int count = 0;
+
+        while (true) {
+            if (s.contains(substring.toString())) {
+                count++;
+                substring.append(sub);
+            }
+            else {
+                count = 0;
+                end += 1;
+                sub = s.substring(0, end);
+                substring = new StringBuilder(sub);
+            }
+            if (substring.toString().equals(s) && count > 0) return true;
+            else if (substring.toString().equals(s) && count == 0 || substring.toString().length() > s.length()) return false;
+        }
+    }
+
 }
 
 
