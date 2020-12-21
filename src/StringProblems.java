@@ -520,6 +520,42 @@ public class StringProblems {
                 A.charAt(indexes.get(1)) == B.charAt(indexes.get(0));
     }
 
+    // Your friend is typing his name into a keyboard. Sometimes, when typing a character c, the key might get long pressed,
+    // and the character will be typed 1 or more times.
+
+    // You examine the typed characters of the keyboard.
+    // Return True if it is possible that it was your friends name, with some characters (possibly none) being long pressed.
+    // put typed in an arraylist and remove every occurrance of character in name from typed
+
+    // Input: name = "alex", typed = "aaleexa"
+    // Output: true
+    // Explanation: 'a' and 'e' in 'alex' were long pressed.
+
+    public boolean isLongPressedName(String name, String typed) {
+        int namePointer = 0;
+        int typedPointer = 0;
+
+        char[] nameChars = name.toCharArray();
+        char[] typedChars = typed.toCharArray();
+
+        while (namePointer < nameChars.length && typedPointer < typedChars.length) {
+            if (nameChars[namePointer] == typedChars[typedPointer]) {
+                namePointer++;
+                typedPointer++;
+            }
+            else if (typedPointer >= 1 && typedChars[typedPointer] == typedChars[typedPointer - 1]) typedPointer++;
+            else return false;
+        }
+
+        if (namePointer < name.length()) return false;
+        else {
+            while (typedPointer < typedChars.length) {
+                if (typedPointer >= 1 && typedChars[typedPointer] == typedChars[typedPointer - 1]) typedPointer++;
+                else if (typedChars[typedPointer] != typedChars[typedPointer - 1]) return false;
+            }
+        }
+        return true;
+    }
 
 }
 
