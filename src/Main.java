@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         StringProblems stringProblems = new StringProblems();
-        boolean result = stringProblems.isLongPressedName("pyplrz", "ppyypllr");
+        int result = stringProblems.maxRepeating("aaabaaaabaaabaaaabaaaabaaaabaaaaba", "aaaba");
         System.out.println(result);
 
 //        ArrayProblems arrayProblems = new ArrayProblems();
