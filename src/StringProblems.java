@@ -596,27 +596,96 @@ public class StringProblems {
     // Given a string s, return the longest palindromic substring in s.
 
     public String longestPalindrome(String s) {
-        int max = 0;
-        String result = "";
+        if (s == null || s.length() < 1) return "";
+
+        int start = 0;
+        int end = 0;
+
         for (int i = 0; i < s.length(); i++) {
-            int j = s.length() - 1;
-            while (i <= j) {
-                System.out.println(i + " " + j);
-                if (isPal(s, i, j)) {
-                    String substring = s.substring(i, j + 1);
-                    System.out.println(substring);
-                    if (substring.length() > max) {
-                        max = substring.length();
-                        result = substring;
-                        System.out.println(max);
-                        System.out.println(substring);
-                    }
-                }
-                j--;
+            int length1 = expandAroundCenter(s, i, i);
+            int length2 = expandAroundCenter(s, i, i + 1);
+            int maxLength = Math.max(length1, length2);
+            if (maxLength > end - start) {
+                start = i - (maxLength - 1) / 2;
+                end = i + (maxLength / 2);
             }
         }
-        return result;
+        return s.substring(start, end + 1);
     }
+
+    public int expandAroundCenter(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        return right - left - 1;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //    public String longestPalindrome(String s) {
+//        if (s == null || s.length() < 1) return "";
+//        int start = 0, end = 0;
+//        for (int i = 0; i < s.length(); i++) {
+//            int len1 = expandAroundCenter(s, i, i);
+//            int len2 = expandAroundCenter(s, i, i + 1);
+//            System.out.println("len1: " + len1);
+//            System.out.println("len2: " + len2);
+//            int len = Math.max(len1, len2);
+//            System.out.println("Max: " + len);
+//            // len of new substring is > previous length of substring
+//            if (len > end - start) {
+//                start = i - (len - 1) / 2;
+//                end = i + len / 2;
+//                System.out.println("start: " + start);
+//                System.out.println("end: " + end);
+//            }
+//            System.out.println();
+//        }
+//        return s.substring(start, end + 1);
+//    }
+//
+//    private int expandAroundCenter(String s, int left, int right) {
+//        int L = left, R = right;
+//        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
+//            System.out.println("L: " + L);
+//            System.out.println("R: " + R);
+//            System.out.println(s.charAt(L));
+//            System.out.println(s.charAt(R));
+//            L--;
+//            R++;
+//        }
+//        System.out.println(R + " - " + L + " - 1");
+//        // to get the length of that substring
+//        // babad -> aba -> stops at indexes 0 and 4 bc b != d -> get length of substring = 4 - 0 - 1 = R - L - 1
+//        return R - L - 1;
+//    }
 
 }
 

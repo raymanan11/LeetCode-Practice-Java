@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         StringProblems stringProblems = new StringProblems();
-        String result = stringProblems.longestPalindrome("a");
+        String result = stringProblems.longestPalindrome("babad");
         System.out.println(result);
 
 //        ArrayProblems arrayProblems = new ArrayProblems();
