@@ -10,29 +10,22 @@ public class StringProblems {
     // Explanation: The answer is "abc", with the length of 3.
 
     public int lengthOfLongestSubstring(String s) {
-
-        Set<Character> results = new HashSet<>();
-
-        int currentIndex = 0;
-        int deleteIndex = 0;
-
-        int longestSubstring = 0;
-
-        while (currentIndex < s.length()) {
-            // if the set doesn't contain the character then add it to the set and update the longest substring
-            if (!results.contains(s.charAt(currentIndex))) {
-                results.add(s.charAt(currentIndex));
-                longestSubstring = Math.max(longestSubstring, results.size());
-                currentIndex++;
+        Set<Character> uniqueChars = new HashSet<>();
+        int max = 0;
+        int i = 0;
+        int j = 0;
+        while (i < s.length()) {
+            if (!uniqueChars.contains(s.charAt(i))) {
+                uniqueChars.add(s.charAt(i));
+                max = Math.max(max, uniqueChars.size());
+                i++;
             }
-            // if it does then keep removing from the set until that character is gone
             else {
-                results.remove(s.charAt(deleteIndex));
-                deleteIndex++;
+                uniqueChars.remove(s.charAt(j));
+                j++;
             }
         }
-
-        return longestSubstring;
+        return max;
     }
 
     // Given a string s containing just the characters '(', ')', '{', '}', '[' and ']',
@@ -141,22 +134,18 @@ public class StringProblems {
     // Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
 
     public List<List<String>> groupAnagrams(String[] strs) {
-
-        Map<String, List> result = new HashMap<>();
+        Map<String, List<String>> map = new HashMap<>();
 
         for (int i = 0; i < strs.length; i++) {
-            char[] cArr = strs[i].toCharArray();
-            Arrays.sort(cArr);
-            String cArrString = String.valueOf(cArr);
-            // if the ordered cArr string is not in the map, then you add it to the map with a new Arraylist
-            if (!result.containsKey(cArrString)) result.put(cArrString, new ArrayList());
-            // at this point the map will have the key since it'll either be added in prev step or already added
-            // then you get the ArrayList from the key and add the corresponding string
-            result.get(cArrString).add(strs[i]);
+            char[] strArr = strs[i].toCharArray();
+            Arrays.sort(strArr);
+            String key = String.valueOf(strArr);
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<>());
+            }
+            map.get(key).add(strs[i]);
         }
-
-        return new ArrayList(result.values());
-
+        return new ArrayList<>(map.values());
     }
 
     public String longestCommonPrefix(String[] strs) {
@@ -585,22 +574,22 @@ public class StringProblems {
     public boolean repeatedSubstringPattern(String s) {
         int end = 1;
         String sub = s.substring(0, end);
-        StringBuilder substring = new StringBuilder(sub);
+        String substring = sub;
         int count = 0;
 
         while (true) {
-            if (s.contains(substring.toString())) {
+            if (s.contains(substring)) {
                 count++;
-                substring.append(sub);
+                substring = substring.concat(sub);
+                if (substring.equals(s) && count > 0) return true;
+                if (substring.equals(s) && count == 0 || substring.length() > s.length()) return false;
             }
             else {
                 count = 0;
                 end += 1;
                 sub = s.substring(0, end);
-                substring = new StringBuilder(sub);
+                substring = sub;
             }
-            if (substring.toString().equals(s) && count > 0) return true;
-            else if (substring.toString().equals(s) && count == 0 || substring.toString().length() > s.length()) return false;
         }
     }
 
