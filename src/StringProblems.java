@@ -593,6 +593,31 @@ public class StringProblems {
         }
     }
 
+    // Given a string s, return the longest palindromic substring in s.
+
+    public String longestPalindrome(String s) {
+        int max = 0;
+        String result = "";
+        for (int i = 0; i < s.length(); i++) {
+            int j = s.length() - 1;
+            while (i <= j) {
+                System.out.println(i + " " + j);
+                if (isPal(s, i, j)) {
+                    String substring = s.substring(i, j + 1);
+                    System.out.println(substring);
+                    if (substring.length() > max) {
+                        max = substring.length();
+                        result = substring;
+                        System.out.println(max);
+                        System.out.println(substring);
+                    }
+                }
+                j--;
+            }
+        }
+        return result;
+    }
+
 }
 
 

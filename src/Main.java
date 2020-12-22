@@ -6,8 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         StringProblems stringProblems = new StringProblems();
-        String[] anagrams = {"eat","tea","tan","ate","nat","bat"};
-        List<List<String>> result = stringProblems.groupAnagrams(anagrams);
+        String result = stringProblems.longestPalindrome("a");
         System.out.println(result);
 
 //        ArrayProblems arrayProblems = new ArrayProblems();
