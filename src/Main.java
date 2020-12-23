@@ -5,14 +5,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        StringProblems stringProblems = new StringProblems();
-        String result = stringProblems.longestPalindrome("babad");
-        System.out.println(result);
+//        StringProblems stringProblems = new StringProblems();
+//        String result = stringProblems.longestPalindrome("babad");
+//        System.out.println(result);
 
 //        ArrayProblems arrayProblems = new ArrayProblems();
-//        int[] nums = {2,2,3,4};
-//        int result = arrayProblems.findLucky(nums);
-//        System.out.println(result);
+//        int[] nums = {2,0,2,1,1,1};
+//        arrayProblems.sortColors(nums);
+//
+//        for (int n : nums) System.out.print(n + " ");
 
 //        Misc misc = new Misc();
 //        int result = misc.divide(-2147483648, -1);

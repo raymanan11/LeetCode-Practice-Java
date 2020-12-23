@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class LinkedListProblems {
 
@@ -125,6 +122,23 @@ public class LinkedListProblems {
             current = first;
         }
 
+        return dummy.next;
+    }
+
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode current = dummy;
+        Set<Integer> unique = new HashSet<>();
+        ListNode previous = new ListNode(0);
+        while (current.next != null) {
+            if (!unique.contains(current.next.val)) {
+                unique.add(current.next.val);
+                previous = current.next;
+                current = current.next;
+            }
+            else previous.next = previous.next.next;
+        }
         return dummy.next;
     }
 

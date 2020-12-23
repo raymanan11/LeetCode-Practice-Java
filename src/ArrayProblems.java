@@ -532,4 +532,46 @@ public class ArrayProblems {
 
     }
 
+    // Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai).
+    // n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0).
+    // Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
+
+    public int maxArea(int[] height) {
+        int maxArea = 0;
+        int left = 0;
+        int right = height.length - 1;
+
+        while (left < right) {
+            maxArea = Math.max(maxArea, Math.min(height[left], height[right]) * Math.abs(left - right));
+            if (height[left] < height[right]) {
+                left++;
+            }
+            else {
+                right--;
+            }
+        }
+        return maxArea;
+    }
+
+    public void sortColors(int[] nums) {
+        int l = 0;
+        int r = nums.length - 1;
+
+        for (int i = 0; i <= r; i++) {
+            if (nums[i] == 0) {
+                int temp = nums[l];
+                nums[l] = nums[i];
+                nums[i] = temp;
+                l++;
+            }
+            else if (nums[i] == 2) {
+                int temp = nums[r];
+                nums[r] = nums[i];
+                nums[i] = temp;
+                r--;
+                i--;
+            }
+        }
+    }
+
 }
