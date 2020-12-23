@@ -574,4 +574,31 @@ public class ArrayProblems {
         }
     }
 
+    // Given an array of size n, find the majority element.
+    // The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+
+    // You may assume that the array is non-empty and the majority element
+    // always exist in the array.
+
+    // Input: [2,2,1,1,1,2,2]
+    // Output: 2
+
+    public int majorityElement(int[] nums) {
+        int majority = nums.length / 2;
+        Map<Integer, Integer> occurrence = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (!occurrence.containsKey(nums[i])) occurrence.put(nums[i], 1);
+            else {
+                int numOccurence = occurrence.get(nums[i]);
+                occurrence.put(nums[i], numOccurence + 1);
+            }
+        }
+
+        System.out.println(occurrence);
+        for (Map.Entry<Integer, Integer> map : occurrence.entrySet()) {
+            if (map.getValue() > majority) return map.getKey();
+        }
+        return 0;
+    }
+
 }

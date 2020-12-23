@@ -9,9 +9,10 @@ public class Main {
 //        String result = stringProblems.longestPalindrome("babad");
 //        System.out.println(result);
 
-//        ArrayProblems arrayProblems = new ArrayProblems();
-//        int[] nums = {2,0,2,1,1,1};
-//        arrayProblems.sortColors(nums);
+        ArrayProblems arrayProblems = new ArrayProblems();
+        int[] nums = {2,2,1,1,1,2,2};
+        int result = arrayProblems.majorityElement(nums);
+        System.out.println(result);
 //
 //        for (int n : nums) System.out.print(n + " ");
 
