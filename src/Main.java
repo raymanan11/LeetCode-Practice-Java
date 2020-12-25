@@ -6,8 +6,16 @@ public class Main {
     public static void main(String[] args) {
 
         StringProblems stringProblems = new StringProblems();
-        boolean result = stringProblems.checkPermutation("blanket", "anlbekt");
-        System.out.println(result);
+        String s = "Mr John Smith       ";
+        char[] arr = s.toCharArray();
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+        }
+        System.out.println();
+        stringProblems.URLify(arr, 13);
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+        }
 
 //        ArrayProblems arrayProblems = new ArrayProblems();
 //        int[] nums = {2,2,1,1,1,2,2};

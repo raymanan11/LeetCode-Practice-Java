@@ -644,6 +644,26 @@ public class StringProblems {
         return Arrays.equals(aCharArr, bCharArr);
     }
 
+    public void URLify(char[] arr, int trueLength) {
+        int numSpaces = 0;
+        for (int i = 0; i < trueLength; i++) {
+            if (arr[i] == ' ') numSpaces++;
+        }
+        int index = trueLength + numSpaces * 2;
+        for (int i = trueLength - 1; i >= 0; i--) {
+            if (arr[i] == ' ') {
+                arr[index - 1] = '0';
+                arr[index - 2] = '2';
+                arr[index - 3] = '%';
+                index -= 3;
+            }
+            else {
+                arr[index - 1] = arr[i];
+                index--;
+            }
+        }
+    }
+
 }
 
 
