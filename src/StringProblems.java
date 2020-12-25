@@ -621,71 +621,28 @@ public class StringProblems {
         return right - left - 1;
     }
 
+    // Implement an algorithm to determine if a string has all unique characters.
+    // What if you cannot use additional data structures.
 
+    // Input: battery
+    // Output false
 
+    public boolean isUnique(String s) {
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (str.indexOf(String.valueOf(s.charAt(i))) < 0) str.append(s.charAt(i));
+            else return false;
+        }
+        return true;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //    public String longestPalindrome(String s) {
-//        if (s == null || s.length() < 1) return "";
-//        int start = 0, end = 0;
-//        for (int i = 0; i < s.length(); i++) {
-//            int len1 = expandAroundCenter(s, i, i);
-//            int len2 = expandAroundCenter(s, i, i + 1);
-//            System.out.println("len1: " + len1);
-//            System.out.println("len2: " + len2);
-//            int len = Math.max(len1, len2);
-//            System.out.println("Max: " + len);
-//            // len of new substring is > previous length of substring
-//            if (len > end - start) {
-//                start = i - (len - 1) / 2;
-//                end = i + len / 2;
-//                System.out.println("start: " + start);
-//                System.out.println("end: " + end);
-//            }
-//            System.out.println();
-//        }
-//        return s.substring(start, end + 1);
-//    }
-//
-//    private int expandAroundCenter(String s, int left, int right) {
-//        int L = left, R = right;
-//        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
-//            System.out.println("L: " + L);
-//            System.out.println("R: " + R);
-//            System.out.println(s.charAt(L));
-//            System.out.println(s.charAt(R));
-//            L--;
-//            R++;
-//        }
-//        System.out.println(R + " - " + L + " - 1");
-//        // to get the length of that substring
-//        // babad -> aba -> stops at indexes 0 and 4 bc b != d -> get length of substring = 4 - 0 - 1 = R - L - 1
-//        return R - L - 1;
-//    }
+    public boolean checkPermutation(String a, String b) {
+        char[] aCharArr = a.toCharArray();
+        char[] bCharArr = b.toCharArray();
+        Arrays.sort(aCharArr);
+        Arrays.sort(bCharArr);
+        return Arrays.equals(aCharArr, bCharArr);
+    }
 
 }
 
