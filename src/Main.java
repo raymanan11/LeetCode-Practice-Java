@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         StringProblems stringProblems = new StringProblems();
-        boolean result = stringProblems.oneAway("pale", "bake");
+        String result = stringProblems.stringCompression("ajwgidvhyvtyv");
         System.out.println(result);
 
 //        ArrayProblems arrayProblems = new ArrayProblems();

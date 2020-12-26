@@ -759,6 +759,39 @@ public class StringProblems {
         return true;
     }
 
+    // String Compression: Implement a method to perform basic string compression using the counts
+    // of repeated characters. For example, the string aabcccccaaa would become a2b1c5a3. If the
+    // "compressed" string would not become smaller than the original string, your method should return
+    // the original string. You can assume the string has only uppercase and lowercase letters (a - z).
+
+    public String stringCompression(String s) {
+
+        StringBuilder compressedString = new StringBuilder();
+
+        char previous = ' ';
+        int count = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (previous != s.charAt(i)) {
+                if (count > 0) {
+                    compressedString.append(previous);
+                    compressedString.append(count);
+                }
+                previous = s.charAt(i);
+                count = 1;
+            }
+            else if (previous == s.charAt(i)) {
+                count++;
+            }
+            if (i == s.length() - 1) {
+                compressedString.append(previous);
+                compressedString.append(count);
+            }
+        }
+
+        return (compressedString.toString().length() < s.length()) ? compressedString.toString() : s;
+    }
+
 }
 
 
