@@ -636,6 +636,9 @@ public class StringProblems {
         return true;
     }
 
+    // Check Permutation: Given two strings, write a method to decide if one is a permutation of the
+    // other.
+
     public boolean checkPermutation(String a, String b) {
         char[] aCharArr = a.toCharArray();
         char[] bCharArr = b.toCharArray();
@@ -643,6 +646,14 @@ public class StringProblems {
         Arrays.sort(bCharArr);
         return Arrays.equals(aCharArr, bCharArr);
     }
+
+    // URLify: Write a method to replace all spaces in a string with '%2e: You may assume that the string
+    // has sufficient space at the end to hold the additional characters, and that you are given the "true"
+    // length of the string. (Note: if implementing in Java, please use a character array so that you can
+    // perform this operation in place.)
+    // EXAMPLE
+    // Input: "Mr John Smith     ", 13
+    // Output: "Mr%2eJohn%2eSmith"
 
     public void URLify(char[] arr, int trueLength) {
         int numSpaces = 0;
@@ -664,11 +675,18 @@ public class StringProblems {
         }
     }
 
+    // Palindrome Permutation: Given a string, write a function to check if it is a permutation of
+    // a palindrome. A palindrome is a word or phrase that is the same forwards and backwards. A
+    // permutation is a rearrangement of letters. The palindrome does not need to be limited to just
+    // dictionary words.
+    // EXAMPLE
+    // Input: Tact Coa
+    // Output: True (permutations:"taco cat'; "atco cta'; etc.)
+
     public boolean isPalindromePermutation(String s) {
         int numOnes = 0;
         if (s.equals("")) return true;
         s = s.toLowerCase().replaceAll(" ", "");
-        System.out.println(s);
         Map<Character, Integer> charCount = new HashMap<>();
         // gets the number of occurences that each letter has
         for (int i = 0; i < s.length(); i++) {
@@ -678,13 +696,23 @@ public class StringProblems {
                 charCount.put(s.charAt(i), occurrence + 1);
             }
         }
-        System.out.println(charCount);
         for (Map.Entry<Character, Integer> map : charCount.entrySet()) {
+            // number of occurences is > 1 and odd then not a palindrome
             if (map.getValue() > 1 && map.getValue() % 2 > 0) return false;
             else if (map.getValue() == 1) numOnes++;
         }
+        // have at most one 1 which serves as the center but if more than one 1 then not a palindrome
         return numOnes <= 1;
     }
+
+    // One Away: There are three types of edits that can be performed on strings: insert a character,
+    // remove a character, or replace a character. Given two strings, write a function to check if they are
+    // one edit (or zero edits) away.
+    // EXAMPLE
+    // pale, ple -> true
+    // pales, pale -> true
+    // pale, bale -> true
+    // pale, bake -)> false
 
     public boolean oneAway(String a, String b) {
         if (a.length() - b.length() == 1) {
