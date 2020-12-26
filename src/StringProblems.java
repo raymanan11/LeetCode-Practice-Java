@@ -686,6 +686,51 @@ public class StringProblems {
         return numOnes <= 1;
     }
 
+    public boolean oneAway(String a, String b) {
+        if (a.length() - b.length() == 1) {
+            System.out.println("a");
+            return insertRemoveCheck(a, b);
+        }
+        else if (a.length() - b.length() == -1) {
+            System.out.println("b");
+            return insertRemoveCheck(b, a);
+        }
+        else if (a.length() == b.length()) {
+            System.out.println("c");
+            return sameLengthCheck(a, b);
+        }
+        System.out.println("d");
+        return false;
+    }
+
+    public boolean insertRemoveCheck(String bigger, String smaller) {
+        int i = 0;
+        int j = 0;
+
+        while (i < bigger.length() && j < smaller.length()) {
+            if (bigger.charAt(i) != smaller.charAt(j)) {
+                if (i != j) return false;
+                i++;
+            }
+            else {
+                i++;
+                j++;
+            }
+        }
+        return true;
+    }
+
+    public boolean sameLengthCheck(String a, String b) {
+        boolean difference = false;
+        for (int i = 0; i < a.length(); i++) {
+            if (a.charAt(i) != b.charAt(i)) {
+                if (difference) return false;
+                difference = true;
+            }
+        }
+        return true;
+    }
+
 }
 
 
