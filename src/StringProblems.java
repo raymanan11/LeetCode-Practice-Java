@@ -664,6 +664,28 @@ public class StringProblems {
         }
     }
 
+    public boolean isPalindromePermutation(String s) {
+        int numOnes = 0;
+        if (s.equals("")) return true;
+        s = s.toLowerCase().replaceAll(" ", "");
+        System.out.println(s);
+        Map<Character, Integer> charCount = new HashMap<>();
+        // gets the number of occurences that each letter has
+        for (int i = 0; i < s.length(); i++) {
+            if (!charCount.containsKey(s.charAt(i))) charCount.put(s.charAt(i), 1);
+            else {
+                int occurrence = charCount.get(s.charAt(i));
+                charCount.put(s.charAt(i), occurrence + 1);
+            }
+        }
+        System.out.println(charCount);
+        for (Map.Entry<Character, Integer> map : charCount.entrySet()) {
+            if (map.getValue() > 1 && map.getValue() % 2 > 0) return false;
+            else if (map.getValue() == 1) numOnes++;
+        }
+        return numOnes <= 1;
+    }
+
 }
 
 

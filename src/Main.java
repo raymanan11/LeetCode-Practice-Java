@@ -6,16 +6,8 @@ public class Main {
     public static void main(String[] args) {
 
         StringProblems stringProblems = new StringProblems();
-        String s = "Mr John Smith       ";
-        char[] arr = s.toCharArray();
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
-        }
-        System.out.println();
-        stringProblems.URLify(arr, 13);
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
-        }
+        boolean result = stringProblems.isPalindromePermutation("");
+        System.out.println(result);
 
 //        ArrayProblems arrayProblems = new ArrayProblems();
 //        int[] nums = {2,2,1,1,1,2,2};
