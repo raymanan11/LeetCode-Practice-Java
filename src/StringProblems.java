@@ -810,6 +810,57 @@ public class StringProblems {
         }
     }
 
+    // Given an m x n matrix. If an element is 0, set its entire row and column to 0. Do it in-place.
+
+    public void setZeroes(int[][] matrix) {
+        if (matrix.length == 0) return;
+
+        Set<Integer> rows = new HashSet<>();
+        Set<Integer> cols = new HashSet<>();
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (matrix[i][j] == 0) {
+                    rows.add(i);
+                    cols.add(j);
+                }
+            }
+        }
+
+        for (int row : rows) {
+            for (int i = 0; i < matrix[0].length; i++) {
+                matrix[row][i] = 0;
+            }
+        }
+
+        for (int col : cols) {
+            for (int i = 0; i < matrix.length; i++) {
+                matrix[i][col] = 0;
+            }
+        }
+
+    }
+
+    // String Rotation: Assume you have a method isSubst ring which checks if one word is a substring
+    // of another. Given two strings, 51 and 52, write code to check if 52 is a rotation of 51 using only one
+    // call to isSubstring (e.g., "waterbottle" is a rotation of"erbottlewat").
+
+    public boolean rotateString(String A, String B) {
+        if (A.length() != B.length()) return false;
+        String half1 = "";
+        String half2 = "";
+
+        for (int i = 0; i < B.length(); i++) {
+            if (A.indexOf(B.charAt(i)) == 0) {
+                half1 = B.substring(i);
+                half2 = B.substring(0, i);
+                break;
+            }
+        }
+
+        return half2.concat(half1).concat(half2).concat(half1).contains(A);
+    }
+
 }
 
 

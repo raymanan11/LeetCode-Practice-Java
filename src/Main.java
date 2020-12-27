@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         StringProblems stringProblems = new StringProblems();
-        String result = stringProblems.stringCompression("ajwgidvhyvtyv");
+        boolean result = stringProblems.rotateString("bbbacddceeb", "ceebbbbacdd");
         System.out.println(result);
 
 //        ArrayProblems arrayProblems = new ArrayProblems();
