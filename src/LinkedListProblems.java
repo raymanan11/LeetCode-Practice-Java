@@ -162,6 +162,11 @@ public class LinkedListProblems {
         node.next = null;
     }
 
+    // Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
+
+    // Input: 1->2->3->3->4->4->5       Input: 1->1->1->2->3
+    // Output: 1->2->5                  Output: 2->3
+    
     public ListNode deleteDuplicatesAgain(ListNode head) {
         ListNode dummy = new ListNode(Integer.MIN_VALUE, head);
         ListNode curr = dummy.next;
@@ -169,19 +174,25 @@ public class LinkedListProblems {
         Set<Integer> common = new HashSet<>();
         Set<Integer> duplicates = new HashSet<>();
 
+        // keep track of all the duplicate values in Linked List
         while (curr != null) {
             if (!common.contains(curr.val)) common.add(curr.val);
             else duplicates.add(curr.val);
             curr = curr.next;
         }
 
+        // reset current node
         curr = dummy;
 
         while (curr != null) {
+            // if node is not a duplicate set previous to current node and proceed to next node
             if (!duplicates.contains(curr.val)) {
                 prev = curr;
                 curr = curr.next;
             }
+            // else this means it encountered a duplicate
+            // set the previous to skip over current node and proceed to next node
+            // set the current to be the previous nodes next node after previous step
             else {
                 if (prev.next == null)
                     prev = curr;
@@ -189,6 +200,53 @@ public class LinkedListProblems {
                 curr = prev.next;
             }
         }
+        return dummy.next;
+    }
+
+    // You are given two linked lists: list1 and list2 of sizes n and m respectively.
+    // Remove list1's nodes from the ath node to the bth node, and put list2 in their place.
+
+    // Input: list1 = [0,1,2,3,4,5], a = 3, b = 4, list2 = [1000000,1000001,1000002]
+    // Output: [0,1,2,1000000,1000001,1000002,5]
+    // Explanation: We remove the nodes 3 and 4 and put the entire list2 in their place.
+    // The blue edges and nodes in the above figure indicate the result.
+
+    public ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
+        ListNode dummy = new ListNode(Integer.MIN_VALUE, list1);
+        ListNode curr = dummy.next;
+        ListNode prev = new ListNode(0);
+        ListNode secondHalf = null;
+        int count = 0;
+
+        // keep track of the rest of the Linked List that needs to be added in second half
+        while (curr.next != null) {
+            if (count == b) {
+                secondHalf = curr.next;
+                break;
+            }
+            curr = curr.next;
+            count++;
+        }
+
+        // reset values
+        curr = dummy.next;
+        count = 0;
+
+        // once reaches a value, set the previous node's next value to list2
+        while (curr.next != null) {
+            if (count == a) {
+                prev.next = list2;
+                // set current == to list2 bc need to get to end of the LL to add secondHalf
+                curr = prev.next;
+            }
+            prev = curr;
+            curr = curr.next;
+            count++;
+        }
+
+        // set the end of the LL to the second half
+        if (secondHalf != null) curr.next = secondHalf;
+
         return dummy.next;
     }
 
