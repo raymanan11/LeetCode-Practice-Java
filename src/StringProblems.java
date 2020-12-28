@@ -847,18 +847,8 @@ public class StringProblems {
 
     public boolean rotateString(String A, String B) {
         if (A.length() != B.length()) return false;
-        String half1 = "";
-        String half2 = "";
 
-        for (int i = 0; i < B.length(); i++) {
-            if (A.indexOf(B.charAt(i)) == 0) {
-                half1 = B.substring(i);
-                half2 = B.substring(0, i);
-                break;
-            }
-        }
-
-        return half2.concat(half1).concat(half2).concat(half1).contains(A);
+        return A.concat(A).contains(B);
     }
 
 }
