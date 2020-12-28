@@ -142,4 +142,54 @@ public class LinkedListProblems {
         return dummy.next;
     }
 
+    // Write a function to delete a node in a singly-linked list.
+    // You will not be given access to the head of the list,
+    // instead you will be given access to the node to be deleted directly.
+
+    // It is guaranteed that the node to be deleted is not a tail node in the list.
+
+    // Input: head = [4,5,1,9], node = 5
+    // Output: [4,1,9]
+    // Explanation: You are given the second node with value 5,
+    // the linked list should become 4 -> 1 -> 9 after calling your function.
+
+    public void deleteNode(ListNode node) {
+        while (node.next.next != null) {
+            node.val = node.next.val;
+            node = node.next;
+        }
+        node.val = node.next.val;
+        node.next = null;
+    }
+
+    public ListNode deleteDuplicatesAgain(ListNode head) {
+        ListNode dummy = new ListNode(Integer.MIN_VALUE, head);
+        ListNode curr = dummy.next;
+        ListNode prev = new ListNode(0);
+        Set<Integer> common = new HashSet<>();
+        Set<Integer> duplicates = new HashSet<>();
+
+        while (curr != null) {
+            if (!common.contains(curr.val)) common.add(curr.val);
+            else duplicates.add(curr.val);
+            curr = curr.next;
+        }
+
+        curr = dummy;
+
+        while (curr != null) {
+            if (!duplicates.contains(curr.val)) {
+                prev = curr;
+                curr = curr.next;
+            }
+            else {
+                if (prev.next == null)
+                    prev = curr;
+                prev.next = prev.next.next;
+                curr = prev.next;
+            }
+        }
+        return dummy.next;
+    }
+
 }
