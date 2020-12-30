@@ -277,4 +277,22 @@ public class LinkedListProblems {
         return dummy.next;
     }
 
+    // Given a singly linked list, determine if it is a palindrome.
+
+    // Input: 1->2->2->1
+    // Output: true
+
+    public boolean isPalindrome(ListNode head) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+
+        while (head != null) {
+            numbers.add(head.val);
+            head = head.next;
+        }
+
+        for (int i = 0; i < numbers.size() / 2; i++) if (numbers.get(i).equals(numbers.get(numbers.size() - 1 - i))) return false;
+
+        return true;
+    }
+
 }
