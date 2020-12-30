@@ -166,7 +166,7 @@ public class LinkedListProblems {
 
     // Input: 1->2->3->3->4->4->5       Input: 1->1->1->2->3
     // Output: 1->2->5                  Output: 2->3
-    
+
     public ListNode deleteDuplicatesAgain(ListNode head) {
         ListNode dummy = new ListNode(Integer.MIN_VALUE, head);
         ListNode curr = dummy.next;
@@ -247,6 +247,33 @@ public class LinkedListProblems {
         // set the end of the LL to the second half
         if (secondHalf != null) curr.next = secondHalf;
 
+        return dummy.next;
+    }
+
+    // Reverse a singly linked list.
+
+    // Input: 1->2->3->4->5->NULL
+    // Output: 5->4->3->2->1->NULL
+
+    public ListNode reverseList(ListNode head) {
+
+        ListNode dummy = new ListNode(0, head);
+        ListNode current = dummy.next;
+
+        ArrayList<Integer> reversedNumbers = new ArrayList<>();
+
+        while (current != null) {
+            reversedNumbers.add(current.val);
+            current = current.next;
+        }
+
+        Collections.reverse(reversedNumbers);
+        current = dummy.next;
+
+        for (int reversedNum : reversedNumbers) {
+            current.val = reversedNum;
+            current = current.next;
+        }
         return dummy.next;
     }
 
