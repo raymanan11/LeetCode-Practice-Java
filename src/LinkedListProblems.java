@@ -331,6 +331,23 @@ public class LinkedListProblems {
 
     }
 
+    // Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+
+    // Input: head = [3,2,0,-4], pos = 1
+    // Output: tail connects to node index 1
+    // Explanation: There is a cycle in the linked list, where tail connects to the second node.
+
+    public ListNode detectCycle(ListNode head) {
+        Map<ListNode, Integer> uniqueLN = new HashMap<>();
+        int location = 1;
+        while (head != null) {
+            if (!uniqueLN.containsKey(head)) uniqueLN.put(head, location);
+            else return head;
+            head = head.next;
+
+        }
+        return null;
+    }
 
 
 }
