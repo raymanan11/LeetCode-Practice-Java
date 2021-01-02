@@ -390,6 +390,11 @@ public class LinkedListProblems {
         return head;
     }
 
+    // Reverse a linked list from position m to n. Do it in one-pass.
+
+    // Input: 1->2->3->4->5->6->7->8->NULL, m = 3, n = 6
+    // Output: 1->2->6->5->4->3->7->8->NULL
+
     public ListNode reverseBetween(ListNode head, int m, int n) {
 
         ListNode prev = null, curr = head, next = null;
@@ -417,6 +422,47 @@ public class LinkedListProblems {
         tail.next = curr;
         return head;
 
+    }
+
+    // You are given two non-empty linked lists representing two non-negative integers.
+    // The most significant digit comes first and each of their nodes contain a single digit.
+    // Add the two numbers and return it as a linked list.
+
+    public ListNode addTwoNumbersAgain(ListNode l1, ListNode l2) {
+        Stack<Integer> aNums = new Stack<>();
+        Stack<Integer> bNums = new Stack<>();
+
+        while (l1 != null) {
+            aNums.add(l1.val);
+            l1 = l1.next;
+        }
+
+        while (l2 != null) {
+            bNums.add(l2.val);
+            l2 = l2.next;
+        }
+
+        int carry = 0;
+        ListNode after = null;
+
+        while (!aNums.isEmpty() || !bNums.isEmpty()) {
+            int a = (!aNums.isEmpty()) ? aNums.pop() : 0;
+            int b = (!bNums.isEmpty()) ? bNums.pop() : 0;
+
+            int sum = a + b + carry;
+            ListNode result = new ListNode(sum % 10);
+            carry = sum / 10;
+            result.next = after;
+            after = result;
+        }
+
+        if (carry > 0) {
+            ListNode additional = new ListNode(carry);
+            additional.next = after;
+            after = additional;
+        }
+
+        return after;
     }
 
 }
