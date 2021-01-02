@@ -372,4 +372,53 @@ public class LinkedListProblems {
         return curr;
     }
 
+    public ListNode sortList(ListNode head) {
+        ArrayList<Integer> sortedNumbers = new ArrayList<>();
+        ListNode curr = head;
+        while (curr != null) {
+            sortedNumbers.add(curr.val);
+            curr = curr.next;
+        }
+        curr = head;
+        Collections.sort(sortedNumbers);
+        int i = 0;
+        while(curr != null) {
+            curr.val = sortedNumbers.get(i);
+            i++;
+            curr = curr.next;
+        }
+        return head;
+    }
+
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+
+        ListNode prev = null, curr = head, next = null;
+
+        while (m > 1) {
+            prev = curr;
+            curr = curr.next;
+            m--;
+            n--;
+        }
+
+        ListNode conn = prev, tail = curr;
+
+        while (n > 0) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            n--;
+        }
+
+        if (conn != null) conn.next = prev;
+        else head = prev;
+
+        tail.next = curr;
+        return head;
+
+    }
+
 }
+
+
