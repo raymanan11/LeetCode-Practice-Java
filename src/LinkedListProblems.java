@@ -256,25 +256,20 @@ public class LinkedListProblems {
     // Output: 5->4->3->2->1->NULL
 
     public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode next = null;
 
-        ListNode dummy = new ListNode(0, head);
-        ListNode current = dummy.next;
-
-        ArrayList<Integer> reversedNumbers = new ArrayList<>();
-
-        while (current != null) {
-            reversedNumbers.add(current.val);
-            current = current.next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
 
-        Collections.reverse(reversedNumbers);
-        current = dummy.next;
+        head = prev;
 
-        for (int reversedNum : reversedNumbers) {
-            current.val = reversedNum;
-            current = current.next;
-        }
-        return dummy.next;
+        return head;
     }
 
     // Given a singly linked list, determine if it is a palindrome.
@@ -335,5 +330,7 @@ public class LinkedListProblems {
         return dummy.next;
 
     }
+
+
 
 }
