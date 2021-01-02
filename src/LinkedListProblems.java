@@ -349,5 +349,27 @@ public class LinkedListProblems {
         return null;
     }
 
+    // Given a non-empty, singly linked list with head node head, return a middle node of linked list.
+    //If there are two middle nodes, return the second middle node.
+
+    public ListNode middleNode(ListNode head) {
+        ListNode curr = head;
+        int size = 0;
+        while (curr != null) {
+            size++;
+            curr = curr.next;
+        }
+        int middle = size / 2;
+        size = 0;
+        curr = head;
+        while (curr != null) {
+            if (size == middle) {
+                break;
+            }
+            curr = curr.next;
+            size++;
+        }
+        return curr;
+    }
 
 }
