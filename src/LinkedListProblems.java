@@ -465,6 +465,39 @@ public class LinkedListProblems {
         return after;
     }
 
+    // Given the head of a linked list, rotate the list to the right by k places.
+
+    // Input: head = [1,2,3,4,5], k = 2
+    // Output: [4,5,1,2,3]
+
+    public ListNode rotateRight(ListNode head, int k) {
+        ListNode first = head;
+        Stack<ListNode> stack = new Stack<>();
+
+        if (head == null || head.next == null) return head;
+
+        while (first != null) {
+            stack.add(first);
+            first = first.next;
+        }
+
+        k = k % stack.size();
+
+        first = head;
+
+        ListNode last = stack.pop();
+
+        while (k > 0) {
+            last.next = first;
+            first = last;
+            last = stack.pop();
+            last.next = null;
+            k--;
+        }
+
+        return first;
+    }
+
 }
 
 
