@@ -26,4 +26,15 @@ public class DynamicProgramming {
         return gridTraveler(m - 1, n) + gridTraveler(m, n - 1);
     }
 
+    // Grid Traveler with DP using memoization
+
+    public long gridTraveler(int m, int n, Map<String, Long> memo) {
+        String key = m + "," + n;
+        if (memo.containsKey(key)) return memo.get(key);
+        if (m == 1 && n == 1) return 1;
+        if (m == 0 || n == 0) return 0;
+        memo.put(key, gridTraveler(m - 1, n, memo) + gridTraveler(m, n - 1, memo));
+        return memo.get(key);
+    }
+
 }
