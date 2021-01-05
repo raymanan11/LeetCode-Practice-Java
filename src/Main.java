@@ -26,10 +26,11 @@ public class Main {
 //        System.out.println(result);
 
         DynamicProgramming dynamicProgramming = new DynamicProgramming();
-        long fib2 = dynamicProgramming.fib(50, new HashMap<>());
-//        int fib1 = dynamicProgramming.fib(50);
+        int fib1 = dynamicProgramming.gridTraveler(2,3);
+//        int fib2 = dynamicProgramming.gridTraveler(20,20);
 
-        System.out.println(fib2);
+        System.out.println(fib1);
+//        System.out.println(fib2);
 //        System.out.println(fib1);
 
     }
