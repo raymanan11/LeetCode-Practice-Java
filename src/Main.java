@@ -1,13 +1,14 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Encryption encryption = new Encryption();
-        String result = encryption.encrypt(" if man was meant to stay on the ground god would have given us roots");
-        System.out.println(result);
+//        Encryption encryption = new Encryption();
+//        String result = encryption.encrypt(" if man was meant to stay on the ground god would have given us roots");
+//        System.out.println(result);
 
 //        StringProblems stringProblems = new StringProblems();
 //        boolean result = stringProblems.rotateString("abcde", "abced");
@@ -23,6 +24,13 @@ public class Main {
 //        Misc misc = new Misc();
 //        int result = misc.divide(-2147483648, -1);
 //        System.out.println(result);
+
+        DynamicProgramming dynamicProgramming = new DynamicProgramming();
+        long fib2 = dynamicProgramming.fib(50, new HashMap<>());
+//        int fib1 = dynamicProgramming.fib(50);
+
+        System.out.println(fib2);
+//        System.out.println(fib1);
 
     }
 }
