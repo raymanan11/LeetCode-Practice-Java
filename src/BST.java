@@ -56,10 +56,8 @@ public class BST {
     TreeNode treeNode = null;
     public TreeNode searchBST(TreeNode root, int val) {
         if (root == null) return null;
-        if (root.val == val) {
-            System.out.println("Found value: " + root.val);
+        if (root.val == val)
             treeNode = root;
-        }
         System.out.println(root.val);
         searchBST(root.left, val);
         searchBST(root.right, val);
