@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.List;
 
 public class Misc {
 
@@ -65,6 +66,21 @@ public class Misc {
         }
         if (negative) return count * -1;
         else return count;
+    }
+
+    public static int updateTimes(List<Integer> signalOne, List<Integer> signalTwo) {
+        int minimumLength = (signalOne.size() < signalTwo.size()) ? signalOne.size() : signalTwo.size();
+        int max = 0;
+        int updateTimes = 0;
+        for (int i = 0; i < minimumLength; i++) {
+            if (signalOne.get(i).equals(signalTwo.get(i))) {
+                if (signalOne.get(i) > max) {
+                    max = Math.max(max, signalOne.get(i));
+                    updateTimes++;
+                }
+            }
+        }
+        return updateTimes;
     }
 
 }
