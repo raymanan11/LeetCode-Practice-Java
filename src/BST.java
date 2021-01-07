@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class BST {
 
     public class TreeNode {
@@ -12,6 +15,22 @@ public class BST {
             this.right = right;
         }
     }
+
+    class Node {
+        public int val;
+        public List<Node> children;
+
+        public Node() {}
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val, List<Node> _children) {
+            val = _val;
+            children = _children;
+        }
+    };
 
     int sum = 0;
 
@@ -58,10 +77,25 @@ public class BST {
         if (root == null) return null;
         if (root.val == val)
             treeNode = root;
-        System.out.println(root.val);
         searchBST(root.left, val);
         searchBST(root.right, val);
         return treeNode;
+    }
+
+    // Given an n-ary tree, return the preorder traversal of its nodes' values.
+
+    public List<Integer> preorder(Node root) {
+        List<Integer> list = new ArrayList<>();
+        preOrder(root, list);
+        return list;
+    }
+
+    public void preOrder(Node root, List<Integer> list) {
+        if (root == null) return;
+        list.add(root.val);
+        for (Node child : root.children) {
+            preOrder(child, list);
+        }
     }
 
 }
