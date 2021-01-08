@@ -513,7 +513,7 @@ public class StringProblems {
     // Return True if it is possible that it was your friends name, with some characters (possibly none) being long pressed.
     // put typed in an arraylist and remove every occurrance of character in name from typed
 
-    // Input: name = "alex", typed = "aaleexa"
+    // Input: name = "alex", typed = "aaleex"
     // Output: true
     // Explanation: 'a' and 'e' in 'alex' were long pressed.
 
@@ -524,6 +524,7 @@ public class StringProblems {
         char[] nameChars = name.toCharArray();
         char[] typedChars = typed.toCharArray();
 
+        // skips through and checks for long pressed
         while (namePointer < nameChars.length && typedPointer < typedChars.length) {
             if (nameChars[namePointer] == typedChars[typedPointer]) {
                 namePointer++;
@@ -533,8 +534,11 @@ public class StringProblems {
             else return false;
         }
 
+        // still some unmatched characters in name. i.e. abc  aabb
         if (namePointer < name.length()) return false;
         else {
+            // characters that are long pressed at the end but aren't considered because
+            // name index was out of bounds already. i.e.  abc   abcccccc
             while (typedPointer < typedChars.length) {
                 if (typedPointer >= 1 && typedChars[typedPointer] == typedChars[typedPointer - 1]) typedPointer++;
                 else if (typedChars[typedPointer] != typedChars[typedPointer - 1]) return false;
