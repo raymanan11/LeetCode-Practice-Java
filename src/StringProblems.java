@@ -445,16 +445,13 @@ public class StringProblems {
     // Output: 2
 
     public int strStr(String haystack, String needle) {
-        int needleSize = needle.length();
-        char start;
-        if (needleSize == 0) return 0;
-        else start = needle.charAt(0);
-
+        char needleStart;
+        if (needle.equals("")) return 0;
+        else needleStart = needle.charAt(0);
+        if (haystack.length() < needle.length()) return -1;
         for (int i = 0; i < haystack.length(); i++) {
-            if (haystack.charAt(i) == start && (i + needleSize <= haystack.length())) {
-                String substringHaystack = haystack.substring(i, i + needleSize);
-                if (substringHaystack.equals(needle)) return i;
-            }
+            if (haystack.charAt(i) == needleStart && i + needle.length() <= haystack.length())
+                if (haystack.substring(i, i + needle.length()).equals(needle)) return i;
         }
         return -1;
     }
