@@ -11,8 +11,8 @@ public class Main {
 //        System.out.println(result);
 
         StringProblems stringProblems = new StringProblems();
-        int result = stringProblems.strStr("aaa", "aaaa");
-        System.out.println(result);
+        boolean result = stringProblems.isLongPressedName("alex", "aaleexx")
+;        System.out.println(result);
 
 //        ArrayProblems arrayProblems = new ArrayProblems();
 //        int[] nums = {2,2,1,1,1,2,2};

@@ -298,25 +298,21 @@ public class ArrayProblems {
     //        ]
 
     public List<List<Integer>> generate(int numRows) {
-
         List<List<Integer>> result = new ArrayList<>();
         if (numRows == 0) return result;
         result.add(new ArrayList<>());
         result.get(0).add(1);
-
-        List<Integer> numbers;
-        List<Integer> prev;
-
+        List<Integer> row;
+        List<Integer> previousRow;
         for (int i = 1; i < numRows; i++) {
-            numbers = new ArrayList<>();
-            prev = result.get(i - 1);
-            numbers.add(1);
+            previousRow = result.get(i - 1);
+            row = new ArrayList<>();
+            row.add(1);
             for (int j = 1; j < i; j++) {
-                int number = prev.get(j - 1) + prev.get(j);
-                numbers.add(number);
+                row.add(previousRow.get(j) + previousRow.get(j - 1));
             }
-            numbers.add(1);
-            result.add(numbers);
+            row.add(1);
+            result.add(row);
         }
         return result;
     }
