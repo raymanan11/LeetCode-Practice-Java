@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BST {
 
@@ -96,6 +98,20 @@ public class BST {
         for (Node child : root.children) {
             preOrder(child, list);
         }
+    }
+
+    public List<Integer> postorder(Node root) {
+        List<Integer> list = new ArrayList<>();
+        postOrder(root, list);
+        return list;
+    }
+
+    public void postOrder(Node root, List<Integer> list) {
+        if (root == null) return;
+        for (Node child : root.children) {
+            postOrder(child, list);
+        }
+        list.add(root.val);
     }
 
 }
