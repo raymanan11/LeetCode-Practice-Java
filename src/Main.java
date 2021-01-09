@@ -10,17 +10,17 @@ public class Main {
 //        String result = encryption.encrypt(" if man was meant to stay on the ground god would have given us roots");
 //        System.out.println(result);
 
-        StringProblems stringProblems = new StringProblems();
-        boolean result = stringProblems.isLongPressedName("alex", "aaleexx")
-;        System.out.println(result);
-
-//        ArrayProblems arrayProblems = new ArrayProblems();
-//        int[] nums = {2,2,1,1,1,2,2};
-//        int result = arrayProblems.majorityElement(nums);
+//        StringProblems stringProblems = new StringProblems();
+//        boolean result = stringProblems.isLongPressedName("alex", "aaleexx");
 //        System.out.println(result);
+
+        ArrayProblems arrayProblems = new ArrayProblems();
+        int[] nums = {0,0,1,1,1,1,2,3,3};
+        int result = arrayProblems.removeDuplicates(nums);
+        System.out.println(result);
 //
 //        for (int n : nums) System.out.print(n + " ");
-
+//
 //        Misc misc = new Misc();
 //        int result = misc.divide(-2147483648, -1);
 //        System.out.println(result);

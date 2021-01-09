@@ -206,9 +206,8 @@ public class ArrayProblems {
         Arrays.sort(nums);
         int result = 1;
         for (int i = 0; i < 2; i++) {
-            result *= nums[nums.length - 1 - i] - 1;
+            result *= nums[nums.length - i] - 1;
         }
-
         return result;
     }
 
