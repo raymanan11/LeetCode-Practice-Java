@@ -4,8 +4,8 @@ public class LinkedListProblems {
 
     // Given the head of a linked list, remove the nth node from the end of the list and return its head.
 
-    // Input: head = [1,2,3,4,5], n = 2   [1,2,3], n = 3   [1,2], n = 1
-    // Output: [1,2,3,5]                  [2.3]            [1]
+    // Input: head = [1,2,3,4,5], n = 4   [1,2,3], n = 3   [1,2], n = 1
+    // Output: [1,3,4,5]                  [2.3]            [1]
 
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -14,11 +14,11 @@ public class LinkedListProblems {
         ListNode l1 = dummy;
         ListNode l2 = dummy;
 
-        for (int i = 1; i <= i + 1; i++) {
+        for (int i = 0; i < n + 1; i++) {
             l1 = l1.next;
         }
 
-        while (l1 != null) {
+        while(l1 != null) {
             l1 = l1.next;
             l2 = l2.next;
         }
