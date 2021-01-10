@@ -265,6 +265,7 @@ public class ArrayProblems {
     // Output: 7, nums = [0,0,1,1,2,3,3]
 
     public int removeDuplicates(int[] nums) {
+
         int i = 0;
         int count = 1;
 
@@ -274,7 +275,7 @@ public class ArrayProblems {
                 count++;
                 nums[i] = nums[j];
             }
-            if (nums[i] != nums[j]) {
+            else if (nums[i] != nums[j]) {
                 i++;
                 count = 1;
                 nums[i] = nums[j];
