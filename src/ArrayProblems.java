@@ -392,22 +392,18 @@ public class ArrayProblems {
     // Output: 6
 
     public int findSpecialInteger(int[] arr) {
-        Map<Integer, Integer> repeating = new HashMap<>();
-
-        int max = 1;
-
-        int arrSize = arr.length;
-        int twentyFive = (int) Math.floor(arrSize * .25);
-        for (int i = 0; i < arrSize; i++) {
-            if (!repeating.containsKey(arr[i])) repeating.put(arr[i], 1);
+        if (arr.length == 1) return arr[0];
+        int twentyFivePercent = arr.length / 4;
+        Map<Integer, Integer> numOccurrences = new HashMap<>();
+        for (int num : arr) {
+            if (!numOccurrences.containsKey(num)) numOccurrences.put(num, 1);
             else {
-                int num = repeating.get(arr[i]);
-                max = Math.max(max, num + 1);
-                repeating.put(arr[i], num + 1);
-                if (max > twentyFive) return arr[i];
+                int addOne = numOccurrences.get(num) + 1;
+                numOccurrences.put(num, addOne);
+                if (numOccurrences.get(num) > twentyFivePercent) return num;
             }
         }
-        return max;
+        return 0;
     }
 
     // Given an array arr, replace every element in that array with the greatest element
