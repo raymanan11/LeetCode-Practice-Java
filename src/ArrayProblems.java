@@ -346,15 +346,15 @@ public class ArrayProblems {
     // Given an array of integers and an integer k, find out whether there are two distinct indices i and j
     // in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.
 
+    // Input: nums = [1,0,1,1], k = 1    Input: nums = [1,2,3,1,2,3], k = 2
+    // Output: true                      Output: false
+
     public boolean containsNearbyDuplicate(int[] nums, int k) {
-
-        Map<Integer, Integer> map = new HashMap<>();
-
+        Map<Integer, Integer> indexes = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(nums[i])) {
-                if (i - map.get(nums[i]) <= k && i != map.get(nums[i])) return true;
-            }
-            map.put(nums[i], i);
+            if (!indexes.containsKey(nums[i])) indexes.put(nums[i], i);
+            else if (Math.abs(indexes.get(nums[i]) - i) <= k) return true;
+            else indexes.put(nums[i], i);
         }
         return false;
     }
