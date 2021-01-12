@@ -508,20 +508,21 @@ public class ArrayProblems {
 
     public int findLucky(int[] arr) {
 
-        Map<Integer, Integer> luckyNumberCount = new HashMap<>();
+        Map<Integer, Integer> frequency = new HashMap<>();
         int max = -1;
-        for (int i = 0; i < arr.length; i++) {
-            if (!luckyNumberCount.containsKey(arr[i])) luckyNumberCount.put(arr[i], 1);
+
+        for (int num : arr) {
+            if (!frequency.containsKey(num)) frequency.put(num, 1);
             else {
-                int num = luckyNumberCount.get(arr[i]);
-                luckyNumberCount.put(arr[i], num + 1);
+                int frequencyPlusOne = frequency.get(num) + 1;
+                frequency.put(num, frequencyPlusOne);
             }
         }
-        for (Map.Entry<Integer, Integer> entry : luckyNumberCount.entrySet()) {
-            if (entry.getKey() == entry.getValue()) max = Math.max(max, entry.getValue());
-        }
-        return max;
 
+        for (Map.Entry<Integer, Integer> map : frequency.entrySet())
+            if (map.getKey().equals(map.getValue())) max = Math.max(map.getKey(), max);
+
+        return max;
     }
 
     // Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai).
