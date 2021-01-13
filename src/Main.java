@@ -10,14 +10,15 @@ public class Main {
 //        String result = encryption.encrypt(" if man was meant to stay on the ground god would have given us roots");
 //        System.out.println(result);
 
-        StringProblems stringProblems = new StringProblems();
-        String result = stringProblems.convert("PAYPALISHIRING", 4);
-        System.out.println(result);
-
-//        ArrayProblems arrayProblems = new ArrayProblems();
-//        int[] nums = {0,0,1,1,1,1,2,3,3};
-//        int result = arrayProblems.removeDuplicates(nums);
+//        StringProblems stringProblems = new StringProblems();
+//        String result = stringProblems.convert("PAYPALISHIRING", 4);
 //        System.out.println(result);
+
+        ArrayProblems arrayProblems = new ArrayProblems();
+        int[] nums = {40,30,20,10};
+        int[] result = arrayProblems.arrayRankTransform(nums);
+        for (int num : result) System.out.println(num);
+
 //
 //        for (int n : nums) System.out.print(n + " ");
 //

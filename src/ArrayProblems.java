@@ -612,4 +612,44 @@ public class ArrayProblems {
         return result;
     }
 
+    // Given an array of integers arr, replace each element with its rank.
+
+    // The rank represents how large the element is. The rank has the following rules:
+
+    // Rank is an integer starting from 1.
+    // The larger the element, the larger the rank. If two elements are equal, their rank must be the same.
+    // Rank should be as small as possible.
+
+    // Input: arr = [40,10,20,30]
+    // Output: [4,1,2,3]
+
+    public int[] arrayRankTransform(int[] arr) {
+        int rank = 1;
+        Map<Integer, Integer> rankings = new HashMap<>();
+
+        // original order of array numbers
+        List<Integer> original = new ArrayList<>();
+        for (int num : arr) {
+            original.add(num);
+        }
+
+        Arrays.sort(arr);
+
+        // the rankings of the numbers put into a map
+        for (int num : arr) {
+            if (!rankings.containsKey(num)) {
+                rankings.put(num, rank);
+                rank++;
+            }
+        }
+
+        int size = original.size();
+        for (int i = 0; i < size; i++) {
+            int currentRank = rankings.get(original.get(i));
+            arr[i] = currentRank;
+        }
+
+        return arr;
+    }
+
 }
