@@ -270,26 +270,17 @@ public class StringProblems {
 
     public String convert(String s, int numRows) {
         if (numRows == 1) return s;
-        String result = "";
-        Map<Integer, List<Character>> map = new HashMap<>();
-        for (int i = 0; i < numRows; i++) {
-            map.put(i, new ArrayList<>());
-        }
-        int num = numRows - 1;
-        int count = 0;
-        for (int i = 0; i < s.length(); i++) {
-            map.get(count).add(s.charAt(i));
-            if (num == numRows - 1) count++;
-            else if (num == 0) count--;
-            if (count == numRows - 1) num = 0;
-            if (count == 0) num = numRows - 1;
-        }
-        for (Map.Entry<Integer, List<Character>> entry : map.entrySet()) {
-            for(char c : entry.getValue()) {
-                result = result.concat(String.valueOf(c));
+        StringBuilder result = new StringBuilder();
+        int skip = numRows * 2 - 2;
+        for (int row = 0; row < numRows; row++) {
+            for (int j = 0; j + row < s.length(); j += skip) {
+                result.append(s.charAt(j + row));
+                if (row != 0 && row != numRows - 1 && j + skip - row < s.length()) {
+                    result.append(s.charAt(j + skip - row));
+                }
             }
         }
-        return result;
+        return result.toString();
     }
 
     // Given an input string s, reverse the order of the words.
@@ -354,6 +345,8 @@ public class StringProblems {
     // Input: "abca"
     // Output: True
     // Explanation: You could delete the character 'c'.
+
+    // racebjcar
 
     public boolean validPalindrome(String s) {
         int middle = s.length() / 2;
