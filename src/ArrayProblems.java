@@ -594,4 +594,22 @@ public class ArrayProblems {
         return 0;
     }
 
+    // Given an array A of 0s and 1s, consider N_i: the i-th subarray from A[0] to A[i] interpreted as
+    // a binary number (from most-significant-bit to least-significant-bit.)
+
+    // Return a list of booleans answer, where answer[i] is true if and only if N_i is divisible by 5.
+
+    public List<Boolean> prefixesDivBy5(int[] A) {
+        List<Boolean> result = new ArrayList<>();
+        int num = 0;
+        for (int number : A) {
+            num += number;
+            result.add(num % 5 == 0);
+            num *= 2;
+            // continuously change numbers such as 6 to 1 to make it easier to calculate instead of bigger numbers
+            num %= 5;
+        }
+        return result;
+    }
+
 }
