@@ -729,4 +729,39 @@ public class ArrayProblems {
         return (unique.size() >= 3) ? nums[lastOccurence + 1] : nums[nums.length - 1];
     }
 
+    // Given an array of integers arr, return true if and only if it is a valid mountain array.
+
+    // Input: arr = [0,2,3,4,5,2,1,0]      Input: arr = [0,2,3,3,5,2,1,0]
+    // Output: true                        Output: false
+
+    public boolean validMountainArray(int[] arr) {
+        if (arr.length < 3) return false;
+        int maxNumber = 0;
+        int maxIndex = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > maxNumber) {
+                maxNumber = arr[i];
+                maxIndex = i;
+            }
+        }
+
+        // if the maxIndex is first or last element in array, then it can't be a mountain
+        if (maxIndex == 0 || maxIndex == arr.length - 1) return false;
+
+        // check if strictly increasing from the left, if not return false
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i <= maxIndex; i++) {
+            if (arr[i] > max) max = arr[i];
+            else return false;
+        }
+        // check if strictly decreasing from the right, if not return false
+        max = maxNumber;
+        for (int i = maxIndex + 1; i < arr.length; i++) {
+            if (arr[i] < max) max = arr[i];
+            else return false;
+        }
+
+        return true;
+    }
+
 }

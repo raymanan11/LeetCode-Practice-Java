@@ -15,8 +15,8 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int[] nums = {3,2,1};
-        int result = arrayProblems.thirdMax(nums);
+        int[] nums = {0,3,2,1};
+        boolean result = arrayProblems.validMountainArray(nums);
         System.out.println(result);
 
 //
