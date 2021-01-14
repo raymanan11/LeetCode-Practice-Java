@@ -705,4 +705,28 @@ public class ArrayProblems {
         return repeating + numPairs(repeating - 1);
     }
 
+    // Given integer array nums, return the third maximum number in this array.
+    // If the third maximum does not exist, return the maximum number.
+
+    // Input: nums = [3,2,1]                     Input: nums = [2,2,3,1]
+    // Output: 1                                 Output: 1
+    // Explanation: The third maximum is 1.
+
+    public int thirdMax(int[] nums) {
+        Arrays.sort(nums);
+        Set<Integer> unique = new HashSet<>();
+        int lastOccurence = nums.length - 1;
+        int three = 3;
+        if (nums.length < 3) return nums[lastOccurence];
+        while (three > 0 && lastOccurence >= 0) {
+            // only subtract three if it's a unique number
+            if (!unique.contains(nums[lastOccurence])) {
+                unique.add(nums[lastOccurence]);
+                three--;
+            }
+            lastOccurence--;
+        }
+        return (unique.size() >= 3) ? nums[lastOccurence + 1] : nums[nums.length - 1];
+    }
+
 }

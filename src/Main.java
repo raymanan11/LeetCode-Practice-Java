@@ -15,8 +15,8 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int[][] nums = {{1,2},{2,1},{2,1},{2,1}};
-        int result = arrayProblems.numEquivDominoPairs(nums);
+        int[] nums = {3,2,1};
+        int result = arrayProblems.thirdMax(nums);
         System.out.println(result);
 
 //
