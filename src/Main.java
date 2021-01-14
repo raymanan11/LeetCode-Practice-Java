@@ -15,9 +15,9 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int[] nums = {40,30,20,10};
-        int[] result = arrayProblems.arrayRankTransform(nums);
-        for (int num : result) System.out.println(num);
+        int[][] nums = {{1,2},{2,1},{2,1},{2,1}};
+        int result = arrayProblems.numEquivDominoPairs(nums);
+        System.out.println(result);
 
 //
 //        for (int n : nums) System.out.print(n + " ");

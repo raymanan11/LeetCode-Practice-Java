@@ -652,4 +652,57 @@ public class ArrayProblems {
         return arr;
     }
 
+    // Given an integer array nums, find three numbers whose product is maximum and return the maximum product.
+
+    // Input: nums = [1,2,3,4]   Input: [-100,-98,-1,2,3,4]
+    // Output: 24                Output: 39200
+
+    public int maximumProduct(int[] nums) {
+        Arrays.sort(nums);
+        return Math.max(nums[nums.length - 1] * nums[nums.length - 2] * nums[nums.length - 3], nums[0] * nums[1] * nums[nums.length - 1]);
+    }
+
+    // Given a list of dominoes, dominoes[i] = [a, b] is equivalent to dominoes[j] = [c, d]
+    // if and only if either (a==c and b==d), or (a==d and b==c) - that is, one domino can be
+    // rotated to be equal to another domino.
+
+    // Return the number of pairs (i, j) for which 0 <= i < j < dominoes.length,
+    // and dominoes[i] is equivalent to dominoes[j].
+
+    // Input: dominoes = [[1,2],[2,1],[3,4],[5,6]]
+    // Output: 1
+
+    public int numEquivDominoPairs(int[][] dominoes) {
+        Map<String, Integer> unique = new HashMap<>();
+
+        // sort all of inner arrays so able to find duplicates (i.e. {2,1} & {1,2} = {1,2} & {1,2}
+        for (int[] pairs : dominoes) {
+            Arrays.sort(pairs);
+        }
+
+        // get the number of recurrences for each unique domino
+        for (int[] pairs : dominoes) {
+            String pair = pairs[0] + "," + pairs[1];
+            if (!unique.containsKey(pair)) unique.put(pair, 0);
+            else {
+                int repeats = unique.get(pair);
+                unique.put(pair, repeats + 1);
+            }
+        }
+
+        // for each of the unique dominoes, use the number of recurrences to calculate number of pairs
+        // and add them to the result
+        int result = 0;
+        for (Map.Entry<String, Integer> map : unique.entrySet()) {
+            if (map.getValue() > 0)
+                result += numPairs(map.getValue());
+        }
+        return result;
+    }
+
+    public int numPairs(int repeating) {
+        if (repeating == 1) return 1;
+        return repeating + numPairs(repeating - 1);
+    }
+
 }
