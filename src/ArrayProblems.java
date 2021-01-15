@@ -763,7 +763,7 @@ public class ArrayProblems {
 
         return true;
     }
-    
+
     public static List<Integer> mergeArrays(List<Integer> a, List<Integer> b) {
         // Write your code here
         List<Integer> result = new ArrayList<>();
@@ -795,5 +795,23 @@ public class ArrayProblems {
         }
         return result;
     }
+
+    public static List<String> funWithAnagrams(List<String> text) {
+        // Write your code here
+        List<String> result = new ArrayList<>();
+        Set<String> uniqueAnagrams = new HashSet<>();
+        for (String possibleAnagrams : text) {
+            char[] charAnagram = possibleAnagrams.toCharArray();
+            Arrays.sort(charAnagram);
+            String sortedAnagram = new String(charAnagram);
+            if (!uniqueAnagrams.contains(sortedAnagram)) {
+                uniqueAnagrams.add(sortedAnagram);
+                result.add(possibleAnagrams);
+            }
+        }
+        Collections.sort(result);
+        return result;
+    }
+
 
 }
