@@ -15,10 +15,20 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int[] nums = {0,3,2,1};
-        boolean result = arrayProblems.validMountainArray(nums);
+        List<Integer> a1 = new ArrayList<>();
+        a1.add(1);
+        a1.add(5);
+        a1.add(7);
+        a1.add(7);
+        List<Integer> b1 = new ArrayList<>();
+        b1.add(0);
+        b1.add(1);
+        b1.add(2);
+        b1.add(3);
+        List<Integer> result = arrayProblems.mergeArrays(a1,b1);
         System.out.println(result);
 
+        System.out.println(7 & (1 << 4));
 //
 //        for (int n : nums) System.out.print(n + " ");
 //

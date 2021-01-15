@@ -763,5 +763,37 @@ public class ArrayProblems {
 
         return true;
     }
+    
+    public static List<Integer> mergeArrays(List<Integer> a, List<Integer> b) {
+        // Write your code here
+        List<Integer> result = new ArrayList<>();
+        int aIndex = 0;
+        int bIndex = 0;
+        while (aIndex < a.size() && bIndex < b.size()) {
+            int aNum = a.get(aIndex);
+            int bNum  = b.get(bIndex);
+            if (aNum < bNum) {
+                result.add(aNum);
+                aIndex++;
+            }
+            else {
+                result.add(bNum);
+                bIndex++;
+            }
+        }
+        if (aIndex != a.size() - 1) {
+            while (aIndex < a.size()) {
+                result.add(a.get(aIndex));
+                aIndex++;
+            }
+        }
+        if (bIndex != b.size() - 1) {
+            while (bIndex < b.size()) {
+                result.add(b.get(bIndex));
+                bIndex++;
+            }
+        }
+        return result;
+    }
 
 }
