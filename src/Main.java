@@ -1,9 +1,12 @@
+import jdk.jshell.JShell;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Main {
-
+    static int count = 0;
     public static void main(String[] args) {
 
 //        Encryption encryption = new Encryption();
@@ -14,14 +17,6 @@ public class Main {
 //        String result = stringProblems.convert("PAYPALISHIRING", 4);
 //        System.out.println(result);
 
-        ArrayProblems arrayProblems = new ArrayProblems();
-        List<String> input = new ArrayList<>();
-        input.add("code");
-        input.add("doce");
-        input.add("ecod");
-        input.add("framer");
-        input.add("frame");
-        List<String> result = arrayProblems.funWithAnagrams(input);
 //
 //        for (int n : nums) System.out.print(n + " ");
 //
@@ -36,4 +31,5 @@ public class Main {
 //        System.out.println(gt);
 
     }
+
 }
