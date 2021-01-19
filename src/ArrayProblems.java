@@ -14,17 +14,14 @@ public class ArrayProblems {
     //    Output: -2147483647
 
     public int maxSubArray(int[] nums) {
-
-        if (nums.length == 1) return nums[0];
-
-        int largest = nums[0];
-        int max_end = nums[0];
+        int maxEnd = nums[0];
+        int max = 0;
 
         for (int i = 1; i < nums.length; i++) {
-            max_end = Math.max(nums[i], nums[i] + max_end);
-            largest = Math.max(largest, max_end);
+            maxEnd = Math.max(nums[i], maxEnd + nums[i]);
+            max = Math.max(max, maxEnd);
         }
-        return largest;
+        return max;
     }
 
     // Say you have an array for which the ith element is the price of a given stock on day i.
@@ -846,6 +843,36 @@ public class ArrayProblems {
         for (int i = left; i <= right; i++) result += subarraySums[i - 1];
         result = (int) (result % ((Math.pow(10, 9) + 7)));
         return result;
+    }
+
+    public int countServers(int[][] grid) {
+        int numRows = grid.length;
+        int numCols = grid[0].length;
+
+        int[] rows = new int[numRows];
+        int[] cols = new int[numCols];
+
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                if (grid[i][j] == 1) {
+                    rows[i]+=1;
+                    cols[j]+=1;
+                }
+            }
+        }
+
+        for (int num : rows) System.out.print(num + " ");
+        System.out.println();
+        for (int num : cols) System.out.print(num + " ");
+        int count = 0;
+        for (int i = 0; i < rows.length; i++) {
+            for (int j = 0; j < cols.length; j++) {
+                if (grid[i][j] == 1) {
+                    if (rows[i] > 1 || cols[j] > 1) count++;
+                }
+            }
+        }
+        return count;
     }
 
 

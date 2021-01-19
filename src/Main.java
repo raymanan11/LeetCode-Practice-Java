@@ -17,8 +17,10 @@ public class Main {
 //        String result = stringProblems.convert("PAYPALISHIRING", 4);
 //        System.out.println(result);
 
-//
-//        for (int n : nums) System.out.print(n + " ");
+        ArrayProblems arrayProblems = new ArrayProblems();
+        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
+        int result = arrayProblems.maxSubArray(nums);
+        System.out.println(result);
 //
 //        Misc misc = new Misc();
 //        int result = misc.divide(-2147483648, -1);
