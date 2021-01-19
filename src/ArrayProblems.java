@@ -34,13 +34,9 @@ public class ArrayProblems {
     public int maxProfit(int[] nums) {
         int maxProfit = 0;
         int smallestStock = nums[0];
-
         for (int i = 1; i < nums.length; i++) {
-            int transactionProfit = nums[i] - smallestStock;
-            // kepp track of the smallest stock
             if (nums[i] < smallestStock) smallestStock = nums[i];
-            // keep track of largest profit
-            else if (nums[i] - smallestStock > maxProfit) maxProfit = transactionProfit;
+            else if (nums[i] - smallestStock > maxProfit) maxProfit = nums[i] - smallestStock;
         }
         return maxProfit;
     }
