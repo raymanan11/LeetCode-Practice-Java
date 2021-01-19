@@ -18,8 +18,8 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
-        int result = arrayProblems.maxSubArray(nums);
+        int[] nums = {1,2,3,4,5,6,7,8,9,20};
+        int result = arrayProblems.firstMissingPositive(nums);
         System.out.println(result);
 //
 //        Misc misc = new Misc();
