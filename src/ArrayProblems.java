@@ -176,14 +176,16 @@ public class ArrayProblems {
     // Output: 2, nums = [2,2]             Output: 5, nums = [0,1,4,0,3]
 
     public int removeElement(int[] nums, int val) {
-        int j = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != val) {
-                nums[j] = nums[i];
-                j++;
+        int i = 0;
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != val) {
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                i++;
             }
         }
-        return j;
+        return i;
     }
 
     // Given the array of integers nums, you will choose two different indices i and j of that array.
