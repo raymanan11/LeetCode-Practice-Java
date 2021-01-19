@@ -46,6 +46,7 @@ public class ArrayProblems {
 
     // Input: nums = [-1,0,1,2,-1,-4]
     // Output: [[-1,-1,2],[-1,0,1]]
+    // [-4,-1,-1,0,1,2]
 
     public List<List<Integer>> threeSum (int[] nums) {
 
@@ -132,21 +133,18 @@ public class ArrayProblems {
 
     public int[] searchRange(int[] nums, int target) {
         int[] result = {-1, -1};
-
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == target) {
                 result[0] = i;
                 break;
             }
         }
-
         for (int i = 0; i < nums.length; i++) {
             if (nums[nums.length - 1 - i] == target) {
-                result[1] = nums.length - 1 - i;
+                result[1] = i;
                 break;
             }
         }
-
         return result;
     }
 
