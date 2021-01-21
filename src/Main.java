@@ -18,9 +18,9 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int[] nums = {1,2,3,4,5,6,7,8,9,20};
-        int result = arrayProblems.firstMissingPositive(nums);
-        System.out.println(result);
+        int[] nums = {2,4,9,3};
+        int[] result = arrayProblems.decrypt(nums, -2);
+        for (int num : result) System.out.print(num + " ");
 //
 //        Misc misc = new Misc();
 //        int result = misc.divide(-2147483648, -1);

@@ -400,11 +400,10 @@ public class ArrayProblems {
     // Output: [18,6,6,6,1,-1]
 
     public int[] replaceElements(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
+        for (int i = 0; i < arr.length; i++) {
             int max = 0;
-            for (int j = i + 1; j < arr.length; j++) {
+            for (int j = i + 1; j < arr.length; j++)
                 max = Math.max(max, arr[j]);
-            }
             arr[i] = max;
         }
         arr[arr.length - 1] = -1;
@@ -458,28 +457,26 @@ public class ArrayProblems {
 
     public int[] decrypt(int[] code, int k) {
         int[] result = new int[code.length];
-        int size = code.length;
-        for (int i = 0; i < size; i++) {
-            int total = 0;
-            if (k > 0) {
-                for (int j = i + 1; j <= i + k; j++) {
-                    total += code[j % size];
-                }
-                System.out.println(total);
-                result[i] = total;
+        if (k > 0) {
+            for (int i = 0; i < code.length; i++) {
+                int sum = 0;
+                for (int j = i + 1; j < i + k; j++)
+                    sum += code[j % code.length];
+                result[i] = sum;
             }
-            else if (k < 0) {
-                for (int j = i - 1; j >= i + k; j--) {
-                    total += code[(j % size + size) % size];
+        }
+        else if (k < 0) {
+            for (int i = 0; i < code.length; i++) {
+                int sum = 0;
+                for (int j = i - 1; j >= k + i; j--) {
+                    sum += (j < 0) ? code[(j % code.length) + code.length] : code[j];
                 }
-                System.out.println();
-                result[i] = total;
+                result[i] = sum;
             }
-            else {
-                for (int j = 0; j < size; j++) {
-                    result[i] = 0;
-                }
-            }
+        }
+        else {
+            for (int i = 0; i < code.length; i++)
+                result[i] = 0;
         }
         return result;
     }
