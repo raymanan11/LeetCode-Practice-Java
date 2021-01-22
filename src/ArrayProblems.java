@@ -605,31 +605,15 @@ public class ArrayProblems {
     // Output: [4,1,2,3]
 
     public int[] arrayRankTransform(int[] arr) {
-        int rank = 1;
-        Map<Integer, Integer> rankings = new HashMap<>();
-
-        // original order of array numbers
-        List<Integer> original = new ArrayList<>();
-        for (int num : arr) {
-            original.add(num);
-        }
-
+        List<Integer> originalOrder = new ArrayList<>();
+        for (int num : arr) originalOrder.add(num);
         Arrays.sort(arr);
-
-        // the rankings of the numbers put into a map
-        for (int num : arr) {
-            if (!rankings.containsKey(num)) {
-                rankings.put(num, rank);
-                rank++;
-            }
-        }
-
-        int size = original.size();
-        for (int i = 0; i < size; i++) {
-            int currentRank = rankings.get(original.get(i));
-            arr[i] = currentRank;
-        }
-
+        int order = 1;
+        Map<Integer, Integer> ranking = new HashMap<>();
+        for (int num : arr)
+            if (!ranking.containsKey(num)) ranking.put(num, order++);
+        for (int i = 0; i < originalOrder.size(); i++)
+            arr[i] = ranking.get(originalOrder.get(i));
         return arr;
     }
 
