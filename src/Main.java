@@ -18,8 +18,8 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int[] nums = {1,3,5,4,7};
-        int result = arrayProblems.findLengthOfLCIS(nums);
+        int[] nums = {-1,0,1,1,-1,1};
+        int result = arrayProblems.pivotIndex(nums);
         System.out.println(result);
 
 //

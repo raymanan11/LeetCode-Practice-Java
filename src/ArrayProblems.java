@@ -898,4 +898,23 @@ public class ArrayProblems {
         return largestLength;
     }
 
+    // Input: nums = [1,7,3,6,5,6]
+    // Output: 3
+
+    public int pivotIndex(int[] nums) {
+        int pivot = -1;
+        int length = nums.length;
+        int sumUpToIndex = 0;
+        for (int i = 0; i < length - 1; i++) {
+            int sumFromIndexToEnd = 0;
+            for (int j = i + 1; j < nums.length; j++)
+                sumFromIndexToEnd += nums[j];
+            if (sumUpToIndex == sumFromIndexToEnd) {
+                return i;
+            }
+            sumUpToIndex += nums[i];
+        }
+        return (nums.length > 0 && sumUpToIndex == 0) ? nums.length - 1 : pivot;
+    }
+
 }
