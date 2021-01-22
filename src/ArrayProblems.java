@@ -490,22 +490,20 @@ public class ArrayProblems {
     // Explanation: The only lucky number in the array is 2 because frequency[2] == 2.
 
     public int findLucky(int[] arr) {
-
-        Map<Integer, Integer> frequency = new HashMap<>();
-        int max = -1;
-
+        Map<Integer, Integer> numOccurences = new HashMap<>();
         for (int num : arr) {
-            if (!frequency.containsKey(num)) frequency.put(num, 1);
+            if (!numOccurences.containsKey(num)) numOccurences.put(num, 1);
             else {
-                int frequencyPlusOne = frequency.get(num) + 1;
-                frequency.put(num, frequencyPlusOne);
+                int numOccurencesPlusOne = numOccurences.get(num) + 1;
+                numOccurences.put(num, numOccurencesPlusOne);
             }
         }
-
-        for (Map.Entry<Integer, Integer> map : frequency.entrySet())
-            if (map.getKey().equals(map.getValue())) max = Math.max(map.getKey(), max);
-
-        return max;
+        int maxLucky = -1;
+        for (Map.Entry<Integer, Integer> map : numOccurences.entrySet()) {
+            if (map.getKey().equals(map.getValue()))
+                maxLucky = Math.max(maxLucky, map.getValue());
+        }
+        return maxLucky;
     }
 
     // Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai).
