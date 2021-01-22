@@ -875,4 +875,27 @@ public class ArrayProblems {
         return Math.min(distance1, distance2);
     }
 
+    // Input: nums = [1,3,5,4,7]
+    // Output: 3
+
+    // increases 1, increases 3, increases 5, decreases 4
+    // once it gets to four remember length 3 but start over to count again
+
+    public int findLengthOfLCIS(int[] nums) {
+        int currentLength = 1;
+        int largestLength = 1;
+        int increasingNum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            // once it keeps increasing, keep track of the count
+            if (nums[i] > increasingNum) {
+                currentLength++;
+                largestLength = Math.max(largestLength, currentLength);
+            }
+            // if it stops increasing, set length of current length back to one and start counting again
+            else currentLength = 1;
+            increasingNum = nums[i];
+        }
+        return largestLength;
+    }
+
 }

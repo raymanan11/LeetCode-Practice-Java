@@ -18,8 +18,8 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int[] nums = {7,10,1,12,11,14,5,0};
-        int result = arrayProblems.distanceBetweenBusStops(nums, 7, 2);
+        int[] nums = {1,3,5,4,7};
+        int result = arrayProblems.findLengthOfLCIS(nums);
         System.out.println(result);
 
 //
