@@ -843,5 +843,36 @@ public class ArrayProblems {
         return count;
     }
 
+    // 0 1   for loop: 0,1    for loop: 1,2,3,0
+    // 0 2   for loop: 0,1,2  for loop: 2,3,0
+    // 0 3   for loop: 0,1,2,3  for loop: 3,0
+    // 1 2   for loop: 1,2    for loop: 2,3,0,1
+    // 1 3   for loop: 1,2,3  for loop: 3,0,1
+    // 2 3   for loop: 2,3    for loop: 3,0,1,2
+
+    // The bus goes along both directions i.e. clockwise and counterclockwise.
+    // Return the shortest distance between the given start and destination stops.
+
+    public int distanceBetweenBusStops(int[] distance, int start, int destination) {
+        int distance1 = 0;
+        int temp = start;
+        // makes sure start is the lesser bus stop
+        start = (start < destination) ? start : destination;
+        // makes sure destination is the bigger bus stop
+        destination = (destination > start) ? destination : temp;
+        // distance from start to destination
+        for (int i = start; i < destination; i++) distance1 += distance[i];
+        // distance from destination to start
+        int distance2 = 0;
+        while (destination != start) {
+            distance2 += distance[destination];
+            destination++;
+            // dealing with the number that overflows
+            // i.e. bus stops [0,1,2,3]
+            // once it goes to four, it'll be 4 % 4 = 0 which looped back to beginning
+            destination = destination % distance.length;
+        }
+        return Math.min(distance1, distance2);
+    }
 
 }

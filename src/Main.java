@@ -18,9 +18,9 @@ public class Main {
 //        System.out.println(result);
 
         ArrayProblems arrayProblems = new ArrayProblems();
-        int[] nums = {2,4,9,3};
-        int[] result = arrayProblems.decrypt(nums, -2);
-        for (int num : result) System.out.print(num + " ");
+        int[] nums = {7,10,1,12,11,14,5,0};
+        int result = arrayProblems.distanceBetweenBusStops(nums, 7, 2);
+        System.out.println(result);
 
 //
 //        Misc misc = new Misc();
