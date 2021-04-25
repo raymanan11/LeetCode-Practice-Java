@@ -14,13 +14,16 @@ public class ArrayProblems {
     //    Output: -2147483647
 
     public int maxSubArray(int[] nums) {
-        int maxEnd = nums[0];
-        int max = 0;
+        if (nums.length == 1) return nums[0];
+
+        int max = nums[0];
+        int maxEnd;
 
         for (int i = 1; i < nums.length; i++) {
-            maxEnd = Math.max(nums[i], maxEnd + nums[i]);
-            max = Math.max(max, maxEnd);
+            maxEnd = Math.max(nums[i], nums[i] + max);
+            max = Math.max(maxEnd, nums[i]);
         }
+
         return max;
     }
 
