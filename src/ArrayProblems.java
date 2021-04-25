@@ -16,12 +16,12 @@ public class ArrayProblems {
     public int maxSubArray(int[] nums) {
         if (nums.length == 1) return nums[0];
 
-        int max = nums[0];
-        int maxEnd;
+        int max = Integer.MIN_VALUE;
+        int maxEnd = 0;
 
-        for (int i = 1; i < nums.length; i++) {
-            maxEnd = Math.max(nums[i], nums[i] + max);
-            max = Math.max(maxEnd, nums[i]);
+        for (int i = 0; i < nums.length; i++) {
+            maxEnd = Math.max(nums[i], nums[i] + maxEnd);
+            max = Math.max(max, maxEnd);
         }
 
         return max;
